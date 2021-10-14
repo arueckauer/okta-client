@@ -16,6 +16,7 @@ class ConfigProvider
                     Request\ListGroupsOfUser::class => Request\GenericFactory::class,
                     Request\ListUsers::class        => Request\GenericFactory::class,
                     User\GetGroups::class           => User\GetGroupsFactory::class,
+                    User\MemberOf::class            => User\MemberOfFactory::class,
                     Client::class                   => ClientFactory::class,
                 ],
             ],
