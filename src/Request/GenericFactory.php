@@ -12,7 +12,10 @@ use function assert;
 
 class GenericFactory implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
+    /**
+     * @param string $requestedName
+     */
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): object
     {
         $client = $container->get(Client::class);
         assert($client instanceof Client);
