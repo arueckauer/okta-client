@@ -6,17 +6,11 @@ namespace OktaClient\Request;
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
-use OktaClient\Client;
 use Psr\Http\Message\ResponseInterface;
 
 class ListUsers
 {
-    protected Client $client;
-
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-    }
+    use ClientTrait;
 
     /**
      * @throws GuzzleException
