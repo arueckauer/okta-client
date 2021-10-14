@@ -1,0 +1,12 @@
+<?php
+
+declare(strict_types=1);
+
+use OktaClient\Client;
+
+return [
+    Client::class => [
+        'api_key'  => 'REPLACE_ME',
+        'base_uri' => 'https://REPLACE_ME.okta.com/api/v1/',
+    ],
+];
