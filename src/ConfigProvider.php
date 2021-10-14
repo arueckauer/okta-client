@@ -11,6 +11,7 @@ class ConfigProvider
         return [
             'dependencies' => [
                 'factories' => [
+                    Group\MembersCommand::class     => Group\MembersCommandFactory::class,
                     Group\GetMembers::class         => Group\GetMembersFactory::class,
                     Request\ListGroupMembers::class => Request\GenericFactory::class,
                     Request\ListGroupsOfUser::class => Request\GenericFactory::class,
