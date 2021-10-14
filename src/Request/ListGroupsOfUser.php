@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 
 use function sprintf;
 
-class GetGroupsForUser
+class ListGroupsOfUser
 {
     use ClientTrait;
 

@@ -6,8 +6,8 @@ namespace OktaClientTest;
 
 use OktaClient\Client;
 use OktaClient\ConfigProvider;
-use OktaClient\Request\GetGroupsForUser;
 use OktaClient\Request\ListGroupMembers;
+use OktaClient\Request\ListGroupsOfUser;
 use OktaClient\Request\ListUsers;
 use PHPUnit\Framework\TestCase;
 
@@ -27,8 +27,8 @@ class ConfigProviderTest extends TestCase
 
         self::assertCount(4, $config['dependencies']['factories']);
         self::assertArrayHasKey(Client::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(GetGroupsForUser::class, $config['dependencies']['factories']);
         self::assertArrayHasKey(ListGroupMembers::class, $config['dependencies']['factories']);
+        self::assertArrayHasKey(ListGroupsOfUser::class, $config['dependencies']['factories']);
         self::assertArrayHasKey(ListUsers::class, $config['dependencies']['factories']);
     }
 }
