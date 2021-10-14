@@ -1,0 +1,73 @@
+<?php
+
+declare(strict_types=1);
+
+namespace OktaClient\Dto;
+
+use JsonException;
+use Psr\Http\Message\ResponseInterface;
+
+use function json_decode;
+
+use const JSON_THROW_ON_ERROR;
+
+class UserGroupCollection
+{
+    /** @var UserGroup[] */
+    private array $data;
+
+    public function __construct(UserGroup ...$data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @throws JsonException
+     */
+    public static function fromResponse(ResponseInterface $response): self
+    {
+        $self = new self();
+
+        /** @var array $payload */
+        $payload = json_decode(
+            (string) $response->getBody(),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+
+        /** @var array $userGroup */
+        foreach ($payload as $userGroup) {
+            $self->add(UserGroup::fromArray($userGroup));
+        }
+
+        return $self;
+    }
+
+    public function add(UserGroup $userGroup): void
+    {
+        $this->data[] = $userGroup;
+    }
+
+    /**
+     * @return UserGroup[]
+     */
+    public function all(): array
+    {
+        return $this->data;
+    }
+
+    /**
+     * @return array<int, array>
+     */
+    public function allAsArray(): array
+    {
+        $array = [];
+
+        foreach ($this->data as $userGroup) {
+            $array[] = (array) $userGroup;
+        }
+
+        return $array;
+    }
+}
