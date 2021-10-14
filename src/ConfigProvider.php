@@ -11,7 +11,8 @@ class ConfigProvider
         return [
             'dependencies' => [
                 'factories' => [
-                    Client::class => ClientFactory::class,
+                    Request\ListUsers::class => Request\ListUsersFactory::class,
+                    Client::class            => ClientFactory::class,
                 ],
             ],
         ];
