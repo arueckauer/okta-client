@@ -1,0 +1,99 @@
+[
+  {
+    "id": "00u6v94romPIKvGDI356",
+    "status": "ACTIVE",
+    "created": "2018-12-27T23:37:59.000Z",
+    "activated": "2018-12-27T23:37:59.000Z",
+    "statusChanged": "2021-09-15T08:55:17.000Z",
+    "lastLogin": "2021-10-07T16:58:50.000Z",
+    "lastUpdated": "2021-09-28T17:02:14.000Z",
+    "passwordChanged": null,
+    "type": {
+      "id": "oty6v963cpqqmM07Y356"
+    },
+    "profile": {
+      "country": "United States",
+      "lastName": "Boyle",
+      "zipCode": "92980",
+      "ipPhone": "87450",
+      "manager": "Shan.Morgan@acme.com",
+      "city": "Port Darlenechester",
+      "displayName": "Cyrus Boyle",
+      "secondEmail": null,
+      "PreferredDataLocation": "PX7",
+      "office": "Port Darlenechester",
+      "title": "Plating Operator OR Coating Machine Operator",
+      "login": "Cyrus.Boyle@acme.com",
+      "otherTelephone": [],
+      "firstName": "Cyrus",
+      "primaryPhone": "16504580668",
+      "mobilePhone": null,
+      "streetAddress": "42407 E Casandra Oval",
+      "countryCode": "US",
+      "state": "CA",
+      "department": "PO",
+      "email": "Cyrus.Boyle@acme.com"
+    },
+    "credentials": {
+      "recovery_question": {
+        "question": "First pet name"
+      },
+      "provider": {
+        "type": "ACTIVE_DIRECTORY",
+        "name": "acme.net"
+      }
+    },
+    "_links": {
+      "self": {
+        "href": "https://acme.okta.com/api/v1/users/00u6v94romPIKvGDI356"
+      }
+    }
+  },
+  {
+    "id": "00u8rdmqbt1Rwlpig357",
+    "status": "ACTIVE",
+    "created": "2021-04-12T21:10:24.000Z",
+    "activated": "2021-04-12T21:10:24.000Z",
+    "statusChanged": "2021-04-12T21:10:24.000Z",
+    "lastLogin": "2021-09-21T09:33:37.000Z",
+    "lastUpdated": "2021-09-13T23:32:59.000Z",
+    "passwordChanged": null,
+    "type": {
+      "id": "oty6v963cpqqmM07Y356"
+    },
+    "profile": {
+      "country": "United States",
+      "lastName": "Gibson",
+      "zipCode": "92980",
+      "ipPhone": "12345",
+      "manager": "Cyrus.Boyle@acme.com",
+      "city": "Port Darlenechester",
+      "displayName": "John Gibson",
+      "secondEmail": null,
+      "PreferredDataLocation": "PX7",
+      "office": "Port Darlenechester",
+      "title": "Offset Lithographic Press Operator",
+      "login": "John.Gibson@acme.com",
+      "otherTelephone": ["0987", "1324"],
+      "firstName": "John",
+      "primaryPhone": "16406013845",
+      "mobilePhone": null,
+      "streetAddress": "42407 E Casandra Oval",
+      "countryCode": "US",
+      "state": "Califonira",
+      "department": "PO",
+      "email": "John.Gibson@acme.com"
+    },
+    "credentials": {
+      "provider": {
+        "type": "ACTIVE_DIRECTORY",
+        "name": "acme.net"
+      }
+    },
+    "_links": {
+      "self": {
+        "href": "https://acme.okta.com/api/v1/users/00u8rdmqbt1Rwlpig357"
+      }
+    }
+  }
+]
