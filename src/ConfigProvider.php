@@ -10,7 +10,9 @@ class ConfigProvider
     {
         return [
             'dependencies' => [
-                'factories' => [],
+                'factories' => [
+                    Client::class => ClientFactory::class,
+                ],
             ],
         ];
     }
