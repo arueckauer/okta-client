@@ -35,6 +35,13 @@
     "config": {
         "sort-packages": true
     },
+    "extra": {
+        "laminas": {
+            "config-provider": [
+                "OktaClient\\ConfigProvider"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
             "OktaClient\\": "src/"
