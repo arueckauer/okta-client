@@ -55,6 +55,6 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "bin": [
-        "bin/console"
+        "bin/okta-client"
     ]
 }
