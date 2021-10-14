@@ -1,0 +1,130 @@
+[
+  {
+    "id": "00g5a84eu4ignaKwa357",
+    "created": "2020-08-27T01:49:55.000Z",
+    "lastUpdated": "2020-08-27T01:49:55.000Z",
+    "lastMembershipUpdated": "2021-08-27T12:57:33.000Z",
+    "objectClass": ["okta:user_group"],
+    "type": "OKTA_GROUP",
+    "profile": {
+      "name": "US_Users",
+      "description": null
+    },
+    "_links": {
+      "logo": [
+        {
+          "name": "medium",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-medium.1a5ebe44c4244fb796c235d86b47e3bb.png",
+          "type": "image/png"
+        },
+        {
+          "name": "large",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-large.d9cfbd8a00a4feac1aa5612ba02e99c0.png",
+          "type": "image/png"
+        }
+      ],
+      "users": {
+        "href": "https://acme.okta.com/api/v1/groups/00g5a84eu4ignaKwa357/users"
+      },
+      "apps": {
+        "href": "https://acme.okta.com/api/v1/groups/00g5a84eu4ignaKwa357/apps"
+      }
+    }
+  },
+  {
+    "id": "00gb6o6h921aRyRDc356",
+    "created": "2019-02-20T22:00:09.000Z",
+    "lastUpdated": "2019-02-20T22:06:46.000Z",
+    "lastMembershipUpdated": "2021-04-07T17:05:36.000Z",
+    "objectClass": ["okta:user_group"],
+    "type": "OKTA_GROUP",
+    "profile": {
+      "name": "IT",
+      "description": "All IT Users"
+    },
+    "_links": {
+      "logo": [
+        {
+          "name": "medium",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-medium.1a5ebe44c4244fb796c235d86b47e3bb.png",
+          "type": "image/png"
+        },
+        {
+          "name": "large",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-large.d9cfbd8a00a4feac1aa5612ba02e99c0.png",
+          "type": "image/png"
+        }
+      ],
+      "users": {
+        "href": "https://acme.okta.com/api/v1/groups/00gb6o6h921aRyRDc356/users"
+      },
+      "apps": {
+        "href": "https://acme.okta.com/api/v1/groups/00gb6o6h921aRyRDc356/apps"
+      }
+    }
+  },
+  {
+    "id": "00gbp381yRpfjcKTo356",
+    "created": "2019-02-28T23:56:00.000Z",
+    "lastUpdated": "2019-02-28T23:56:00.000Z",
+    "lastMembershipUpdated": "2021-08-26T22:55:21.000Z",
+    "objectClass": ["okta:user_group"],
+    "type": "OKTA_GROUP",
+    "profile": {
+      "name": "Port Darlenechester",
+      "description": "ServiceNow Group for Location"
+    },
+    "_links": {
+      "logo": [
+        {
+          "name": "medium",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-medium.1a5ebe44c4244fb796c235d86b47e3bb.png",
+          "type": "image/png"
+        },
+        {
+          "name": "large",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-large.d9cfbd8a00a4feac1aa5612ba02e99c0.png",
+          "type": "image/png"
+        }
+      ],
+      "users": {
+        "href": "https://acme.okta.com/api/v1/groups/00gbp381yRpfjcKTo356/users"
+      },
+      "apps": {
+        "href": "https://acme.okta.com/api/v1/groups/00gbp381yRpfjcKTo356/apps"
+      }
+    }
+  },
+  {
+    "id": "00giaughr31bJgPPl356",
+    "created": "2019-04-25T21:36:44.000Z",
+    "lastUpdated": "2019-04-25T21:36:44.000Z",
+    "lastMembershipUpdated": "2019-04-25T21:42:40.000Z",
+    "objectClass": ["okta:user_group"],
+    "type": "OKTA_GROUP",
+    "profile": {
+      "name": "Okta Admins",
+      "description": "directory-integrated Okta administrators"
+    },
+    "_links": {
+      "logo": [
+        {
+          "name": "medium",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-medium.1a5ebe44c4244fb796c235d86b47e3bb.png",
+          "type": "image/png"
+        },
+        {
+          "name": "large",
+          "href": "https://ok7static.oktacdn.com/assets/img/logos/groups/odyssey/okta-large.d9cfbd8a00a4feac1aa5612ba02e99c0.png",
+          "type": "image/png"
+        }
+      ],
+      "users": {
+        "href": "https://acme.okta.com/api/v1/groups/00giaughr31bJgPPl356/users"
+      },
+      "apps": {
+        "href": "https://acme.okta.com/api/v1/groups/00giaughr31bJgPPl356/apps"
+      }
+    }
+  }
+]
