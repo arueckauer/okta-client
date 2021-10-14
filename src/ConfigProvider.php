@@ -19,6 +19,7 @@ class ConfigProvider
                     User\GetGroups::class           => User\GetGroupsFactory::class,
                     User\GroupsCommand::class       => User\GroupsCommandFactory::class,
                     User\MemberOf::class            => User\MemberOfFactory::class,
+                    User\MemberOfCommand::class     => User\MemberOfCommandFactory::class,
                     Client::class                   => ClientFactory::class,
                 ],
             ],
