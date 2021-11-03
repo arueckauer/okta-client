@@ -68,4 +68,34 @@ class UserGroupCollectionTest extends TestCase
             $userGroups[3]
         );
     }
+
+    /**
+     * @covers \OktaClient\Dto\UserGroupCollection::hasUserGroupWithId
+     */
+    public function test_hasUserGroupWithId(): void
+    {
+        $userGroupA              = new UserGroup();
+        $userGroupA->id          = '00g5a84eu4ignaKwa357';
+        $userGroupA->type        = 'OKTA_GROUP';
+        $userGroupA->profileName = 'US_Users';
+
+        $userGroupB              = new UserGroup();
+        $userGroupB->id          = '00gb6o6h921aRyRDc356';
+        $userGroupB->type        = 'OKTA_GROUP';
+        $userGroupB->profileName = 'IT';
+
+        $userGroupC              = new UserGroup();
+        $userGroupC->id          = '00giaughr31bJgPPl356';
+        $userGroupC->type        = 'OKTA_GROUP';
+        $userGroupC->profileName = 'Okta Admins';
+
+        $collection = new UserGroupCollection($userGroupA, $userGroupB, $userGroupC);
+
+        self::assertTrue($collection->hasUserGroupWithId('00g5a84eu4ignaKwa357'));
+        self::assertTrue($collection->hasUserGroupWithId('00gb6o6h921aRyRDc356'));
+        self::assertTrue($collection->hasUserGroupWithId('00giaughr31bJgPPl356'));
+        self::assertFalse($collection->hasUserGroupWithId('goggles'));
+        self::assertFalse($collection->hasUserGroupWithId('waddle'));
+        self::assertFalse($collection->hasUserGroupWithId('disco'));
+    }
 }

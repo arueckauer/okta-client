@@ -70,4 +70,15 @@ class UserGroupCollection
 
         return $array;
     }
+
+    public function hasUserGroupWithId(string $id): bool
+    {
+        foreach ($this->data as $userGroup) {
+            if ($userGroup->id === $id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
