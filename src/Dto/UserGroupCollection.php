@@ -81,4 +81,15 @@ class UserGroupCollection
 
         return false;
     }
+
+    public function hasUserGroupWithProfileName(string $profileName): bool
+    {
+        foreach ($this->data as $userGroup) {
+            if ($userGroup->profileName === $profileName) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

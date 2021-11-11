@@ -98,4 +98,34 @@ class UserGroupCollectionTest extends TestCase
         self::assertFalse($collection->hasUserGroupWithId('waddle'));
         self::assertFalse($collection->hasUserGroupWithId('disco'));
     }
+
+    /**
+     * @covers \OktaClient\Dto\UserGroupCollection::hasUserGroupWithProfileName
+     */
+    public function test_hasUserGroupWithProfileName(): void
+    {
+        $userGroupA              = new UserGroup();
+        $userGroupA->id          = '00g5a84eu4ignaKwa357';
+        $userGroupA->type        = 'OKTA_GROUP';
+        $userGroupA->profileName = 'US_Users';
+
+        $userGroupB              = new UserGroup();
+        $userGroupB->id          = '00gb6o6h921aRyRDc356';
+        $userGroupB->type        = 'OKTA_GROUP';
+        $userGroupB->profileName = 'IT';
+
+        $userGroupC              = new UserGroup();
+        $userGroupC->id          = '00giaughr31bJgPPl356';
+        $userGroupC->type        = 'OKTA_GROUP';
+        $userGroupC->profileName = 'Okta Admins';
+
+        $collection = new UserGroupCollection($userGroupA, $userGroupB, $userGroupC);
+
+        self::assertTrue($collection->hasUserGroupWithProfileName('US_Users'));
+        self::assertTrue($collection->hasUserGroupWithProfileName('IT'));
+        self::assertTrue($collection->hasUserGroupWithProfileName('Okta Admins'));
+        self::assertFalse($collection->hasUserGroupWithProfileName('goggles'));
+        self::assertFalse($collection->hasUserGroupWithProfileName('waddle'));
+        self::assertFalse($collection->hasUserGroupWithProfileName('disco'));
+    }
 }
