@@ -27,10 +27,10 @@
         "symfony/console": "^5.3"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "^2.3",
-        "phpunit/phpunit": "^9.5",
+        "laminas/laminas-coding-standard": "2.3.0",
+        "phpunit/phpunit": "9.5.21",
         "roave/security-advisories": "dev-latest",
-        "vimeo/psalm": "^4.11"
+        "vimeo/psalm": "4.26.0"
     },
     "config": {
         "sort-packages": true
