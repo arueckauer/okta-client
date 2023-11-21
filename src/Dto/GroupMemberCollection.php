@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OktaClient\Dto;
 
+use JsonException;
 use Psr\Http\Message\ResponseInterface;
 
 use function json_decode;
@@ -20,11 +21,14 @@ class GroupMemberCollection
         $this->data = $data;
     }
 
+    /**
+     * @throws JsonException
+     */
     public static function fromResponse(ResponseInterface $response): self
     {
         /** @var array $payload */
         $payload = json_decode(
-            (string) $response->getBody(),
+            $response->getBody()->getContents(),
             true,
             512,
             JSON_THROW_ON_ERROR

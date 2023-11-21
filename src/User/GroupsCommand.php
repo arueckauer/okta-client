@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace OktaClient\User;
 
+use GuzzleHttp\Exception\GuzzleException;
+use JsonException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
@@ -36,6 +38,10 @@ class GroupsCommand extends Command
         );
     }
 
+    /**
+     * @throws GuzzleException
+     * @throws JsonException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('<info>Get Groups of a User</info>');

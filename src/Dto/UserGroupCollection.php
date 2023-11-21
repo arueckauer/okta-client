@@ -30,7 +30,7 @@ class UserGroupCollection
 
         /** @var array $payload */
         $payload = json_decode(
-            (string) $response->getBody(),
+            $response->getBody()->getContents(),
             true,
             512,
             JSON_THROW_ON_ERROR

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace OktaClient\Group;
 
+use GuzzleHttp\Exception\GuzzleException;
+use JsonException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
@@ -32,6 +34,10 @@ class MembersCommand extends Command
         $this->addArgument('group-id', InputArgument::REQUIRED, 'Id of the group');
     }
 
+    /**
+     * @throws GuzzleException
+     * @throws JsonException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $groupId = (string) $input->getArgument('group-id');

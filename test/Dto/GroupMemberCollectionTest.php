@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace OktaClientTest\Dto;
 
+use JsonException;
 use OktaClient\Dto\GroupMember;
 use OktaClient\Dto\GroupMemberCollection;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
 use function dirname;
 use function file_get_contents;
@@ -16,6 +18,7 @@ class GroupMemberCollectionTest extends TestCase
 {
     /**
      * @covers \OktaClient\Dto\GroupMemberCollection::fromResponse
+     * @throws JsonException
      */
     public function test_fromResponse(): void
     {
@@ -37,11 +40,17 @@ class GroupMemberCollectionTest extends TestCase
 
         $payload = file_get_contents(dirname(__DIR__) . '/TestAsset/Request/list-group-members-response.json');
 
+        $body = $this->createMock(StreamInterface::class);
+        $body
+            ->expects(self::once())
+            ->method('getContents')
+            ->willReturn($payload);
+
         $response = $this->createMock(ResponseInterface::class);
         $response
             ->expects(self::once())
             ->method('getBody')
-            ->willReturn($payload);
+            ->willReturn($body);
 
         self::assertEquals(
             $expected,
