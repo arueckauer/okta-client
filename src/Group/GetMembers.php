@@ -11,11 +11,8 @@ use OktaClient\Request\ListGroupMembers;
 
 class GetMembers
 {
-    private ListGroupMembers $listGroupMembers;
-
-    public function __construct(ListGroupMembers $listGroupMembers)
+    public function __construct(private readonly ListGroupMembers $listGroupMembers)
     {
-        $this->listGroupMembers = $listGroupMembers;
     }
 
     /**

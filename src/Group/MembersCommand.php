@@ -18,12 +18,8 @@ use function sprintf;
 
 class MembersCommand extends Command
 {
-    private GetMembers $getMembers;
-
-    public function __construct(GetMembers $getMembers)
+    public function __construct(private readonly GetMembers $getMembers)
     {
-        $this->getMembers = $getMembers;
-
         parent::__construct();
     }
 

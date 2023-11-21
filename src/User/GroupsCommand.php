@@ -18,12 +18,8 @@ use function sprintf;
 
 class GroupsCommand extends Command
 {
-    private GetGroups $getGroups;
-
-    public function __construct(GetGroups $getGroups)
+    public function __construct(private readonly GetGroups $getGroups)
     {
-        $this->getGroups = $getGroups;
-
         parent::__construct('user:groups');
     }
 
