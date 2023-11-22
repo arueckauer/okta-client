@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace OktaClientTest\Dto;
 
 use OktaClient\Dto\UserGroup;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(UserGroup::class)]
 class UserGroupTest extends TestCase
 {
-    /**
-     * @covers \OktaClient\Dto\UserGroup::fromArray
-     */
     public function test_fromArray(): void
     {
         $expected = new UserGroup(

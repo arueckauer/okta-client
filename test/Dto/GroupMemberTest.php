@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace OktaClientTest\Dto;
 
 use OktaClient\Dto\GroupMember;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(GroupMember::class)]
 class GroupMemberTest extends TestCase
 {
-    /**
-     * @covers \OktaClient\Dto\GroupMember::fromArray
-     */
     public function test_fromArray(): void
     {
         $expected = new GroupMember(

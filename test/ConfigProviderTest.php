@@ -15,16 +15,15 @@ use OktaClient\User\GetGroups;
 use OktaClient\User\GroupsCommand;
 use OktaClient\User\MemberOf;
 use OktaClient\User\MemberOfCommand;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @psalm-import-type _Configuration from ConfigProvider
  */
+#[CoversClass(ConfigProvider::class)]
 class ConfigProviderTest extends TestCase
 {
-    /**
-     * @covers \OktaClient\ConfigProvider::__invoke
-     */
     public function test__invoke(): void
     {
         /** @psalm-var _Configuration $config */

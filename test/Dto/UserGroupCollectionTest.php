@@ -7,6 +7,7 @@ namespace OktaClientTest\Dto;
 use JsonException;
 use OktaClient\Dto\UserGroup;
 use OktaClient\Dto\UserGroupCollection;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -14,10 +15,10 @@ use Psr\Http\Message\StreamInterface;
 use function dirname;
 use function file_get_contents;
 
+#[CoversClass(UserGroupCollection::class)]
 class UserGroupCollectionTest extends TestCase
 {
     /**
-     * @covers \OktaClient\Dto\UserGroupCollection::fromResponse
      * @throws JsonException
      */
     public function test_fromResponse(): void
@@ -81,9 +82,6 @@ class UserGroupCollectionTest extends TestCase
         );
     }
 
-    /**
-     * @covers \OktaClient\Dto\UserGroupCollection::hasUserGroupWithId
-     */
     public function test_hasUserGroupWithId(): void
     {
         $userGroupA = new UserGroup(
@@ -114,9 +112,6 @@ class UserGroupCollectionTest extends TestCase
         self::assertFalse($collection->hasUserGroupWithId('disco'));
     }
 
-    /**
-     * @covers \OktaClient\Dto\UserGroupCollection::hasUserGroupWithProfileName
-     */
     public function test_hasUserGroupWithProfileName(): void
     {
         $userGroupA = new UserGroup(

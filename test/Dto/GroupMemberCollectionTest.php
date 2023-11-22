@@ -7,6 +7,7 @@ namespace OktaClientTest\Dto;
 use JsonException;
 use OktaClient\Dto\GroupMember;
 use OktaClient\Dto\GroupMemberCollection;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -14,10 +15,10 @@ use Psr\Http\Message\StreamInterface;
 use function dirname;
 use function file_get_contents;
 
+#[CoversClass(GroupMemberCollection::class)]
 class GroupMemberCollectionTest extends TestCase
 {
     /**
-     * @covers \OktaClient\Dto\GroupMemberCollection::fromResponse
      * @throws JsonException
      */
     public function test_fromResponse(): void
