@@ -55,9 +55,21 @@ class UserGroupTest extends TestCase
             ],
         ];
 
+        $actual = UserGroup::fromArray($input);
+
         self::assertEquals(
-            $expected,
-            UserGroup::fromArray($input)
+            $expected->id,
+            $actual->id,
+        );
+
+        self::assertEquals(
+            $expected->type,
+            $actual->type,
+        );
+
+        self::assertEquals(
+            $expected->profileName,
+            $actual->profileName,
         );
     }
 }

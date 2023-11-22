@@ -73,9 +73,31 @@ class GroupMemberTest extends TestCase
             ],
         ];
 
+        $actual = GroupMember::fromArray($input);
+
         self::assertEquals(
-            $expected,
-            GroupMember::fromArray($input)
+            $expected->id,
+            $actual->id,
+        );
+
+        self::assertEquals(
+            $expected->status,
+            $actual->status,
+        );
+
+        self::assertEquals(
+            $expected->firstName,
+            $actual->firstName,
+        );
+
+        self::assertEquals(
+            $expected->lastName,
+            $actual->lastName,
+        );
+
+        self::assertEquals(
+            $expected->email,
+            $actual->email,
         );
     }
 }

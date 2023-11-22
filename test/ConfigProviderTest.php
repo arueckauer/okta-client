@@ -17,6 +17,9 @@ use OktaClient\User\MemberOf;
 use OktaClient\User\MemberOfCommand;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @psalm-import-type _Configuration from ConfigProvider
+ */
 class ConfigProviderTest extends TestCase
 {
     /**
@@ -24,12 +27,8 @@ class ConfigProviderTest extends TestCase
      */
     public function test__invoke(): void
     {
+        /** @psalm-var _Configuration $config */
         $config = (new ConfigProvider())();
-
-        self::assertArrayHasKey('dependencies', $config);
-
-        self::assertIsArray($config['dependencies']);
-        self::assertArrayHasKey('factories', $config['dependencies']);
 
         self::assertCount(10, $config['dependencies']['factories']);
         self::assertArrayHasKey(Client::class, $config['dependencies']['factories']);
