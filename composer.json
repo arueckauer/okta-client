@@ -1,15 +1,14 @@
 {
     "name": "arueckauer/okta-client",
-    "type": "library",
     "description": "PHP client for Core Okta API",
+    "license": "BSD-3-Clause",
+    "type": "library",
     "keywords": [
         "okta",
         "okta-api",
         "okta-client",
         "client"
     ],
-    "homepage": "https://github.com/arueckauer/okta-client",
-    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Andi Rückauer",
@@ -18,23 +17,45 @@
             "role": "Project Lead"
         }
     ],
+    "homepage": "https://github.com/arueckauer/okta-client",
     "require": {
         "php": "~8.1.0",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "~7.5.0",
-        "laminas/laminas-config-aggregator": "^1.7",
-        "laminas/laminas-servicemanager": "^3.10",
-        "symfony/console": "^5.3"
+        "guzzlehttp/guzzle": "^7.5",
+        "laminas/laminas-config-aggregator": "^1.14",
+        "laminas/laminas-servicemanager": "^3.22",
+        "symfony/console": "^6.3"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "^2.3",
-        "phpunit/phpunit": "^9.5",
+        "ergebnis/composer-normalize": "^2.39",
+        "laminas/laminas-coding-standard": "^2.5",
+        "phpunit/phpunit": "^10.4",
+        "rector/rector": "^0.18.10",
         "roave/security-advisories": "dev-latest",
-        "vimeo/psalm": "^4.11"
+        "vimeo/psalm": "^5.15"
     },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "OktaClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OktaClientTest\\": "test/unit"
+        }
+    },
+    "bin": [
+        "bin/okta-client"
+    ],
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true
+        },
+        "audit": {
+            "abandoned": "report"
         },
         "sort-packages": true
     },
@@ -44,20 +65,5 @@
                 "OktaClient\\ConfigProvider"
             ]
         }
-    },
-    "autoload": {
-        "psr-4": {
-            "OktaClient\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "OktaClientTest\\": "test"
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true,
-    "bin": [
-        "bin/okta-client"
-    ]
+    }
 }

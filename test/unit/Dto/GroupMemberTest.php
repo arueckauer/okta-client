@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace OktaClientTest\Dto;
 
 use OktaClient\Dto\GroupMember;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(GroupMember::class)]
 class GroupMemberTest extends TestCase
 {
-    /**
-     * @covers \OktaClient\Dto\GroupMember::fromArray
-     */
     public function test_fromArray(): void
     {
-        $expected            = new GroupMember();
-        $expected->id        = '00u6v94romPIKvGDI356';
-        $expected->status    = 'ACTIVE';
-        $expected->firstName = 'Clyde';
-        $expected->lastName  = 'Boyle';
-        $expected->email     = 'Clyde.Boyle@acme.com';
+        $expected = new GroupMember(
+            '00u6v94romPIKvGDI356',
+            'ACTIVE',
+            'Clyde',
+            'Boyle',
+            'Clyde.Boyle@acme.com',
+        );
 
         $input = [
             'id'              => '00u6v94romPIKvGDI356',
@@ -72,9 +72,31 @@ class GroupMemberTest extends TestCase
             ],
         ];
 
+        $actual = GroupMember::fromArray($input);
+
         self::assertEquals(
-            $expected,
-            GroupMember::fromArray($input)
+            $expected->id,
+            $actual->id,
+        );
+
+        self::assertEquals(
+            $expected->status,
+            $actual->status,
+        );
+
+        self::assertEquals(
+            $expected->firstName,
+            $actual->firstName,
+        );
+
+        self::assertEquals(
+            $expected->lastName,
+            $actual->lastName,
+        );
+
+        self::assertEquals(
+            $expected->email,
+            $actual->email,
         );
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace OktaClient\User;
 
+use GuzzleHttp\Exception\GuzzleException;
+use JsonException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,12 +15,9 @@ use function sprintf;
 
 class MemberOfCommand extends Command
 {
-    private MemberOf $memberOf;
-
-    public function __construct(MemberOf $memberOf)
-    {
-        $this->memberOf = $memberOf;
-
+    public function __construct(
+        private readonly MemberOf $memberOf,
+    ) {
         parent::__construct('user:member-of');
     }
 
@@ -39,6 +38,10 @@ class MemberOfCommand extends Command
         );
     }
 
+    /**
+     * @throws GuzzleException
+     * @throws JsonException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('<info>Check if user is group member</info>');

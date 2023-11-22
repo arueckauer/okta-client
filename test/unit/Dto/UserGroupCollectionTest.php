@@ -4,45 +4,58 @@ declare(strict_types=1);
 
 namespace OktaClientTest\Dto;
 
+use JsonException;
 use OktaClient\Dto\UserGroup;
 use OktaClient\Dto\UserGroupCollection;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
 use function dirname;
 use function file_get_contents;
 
+#[CoversClass(UserGroupCollection::class)]
 class UserGroupCollectionTest extends TestCase
 {
     /**
-     * @covers \OktaClient\Dto\UserGroupCollection::fromResponse
+     * @throws JsonException
      */
     public function test_fromResponse(): void
     {
-        $userGroupA              = new UserGroup();
-        $userGroupA->id          = '00g5a84eu4ignaKwa357';
-        $userGroupA->type        = 'OKTA_GROUP';
-        $userGroupA->profileName = 'US_Users';
+        $userGroupA = new UserGroup(
+            '00g5a84eu4ignaKwa357',
+            'OKTA_GROUP',
+            'US_Users',
+        );
 
-        $userGroupB              = new UserGroup();
-        $userGroupB->id          = '00gb6o6h921aRyRDc356';
-        $userGroupB->type        = 'OKTA_GROUP';
-        $userGroupB->profileName = 'IT';
+        $userGroupB = new UserGroup(
+            '00gb6o6h921aRyRDc356',
+            'OKTA_GROUP',
+            'IT',
+        );
 
-        $userGroupC              = new UserGroup();
-        $userGroupC->id          = '00giaughr31bJgPPl356';
-        $userGroupC->type        = 'OKTA_GROUP';
-        $userGroupC->profileName = 'Okta Admins';
+        $userGroupC = new UserGroup(
+            '00giaughr31bJgPPl356',
+            'OKTA_GROUP',
+            'Okta Admins',
+        );
 
         $payload = file_get_contents(
-            dirname(__DIR__) . '/TestAsset/Request/list-groups-of-users-response.json'
+            dirname(__DIR__, 2) . '/asset/request/list-groups-of-users-response.json'
         );
+
+        $body = $this->createMock(StreamInterface::class);
+        $body
+            ->expects(self::once())
+            ->method('getContents')
+            ->willReturn($payload);
 
         $response = $this->createMock(ResponseInterface::class);
         $response
             ->expects(self::once())
             ->method('getBody')
-            ->willReturn($payload);
+            ->willReturn($body);
 
         $collection = UserGroupCollection::fromResponse($response);
 
@@ -69,25 +82,25 @@ class UserGroupCollectionTest extends TestCase
         );
     }
 
-    /**
-     * @covers \OktaClient\Dto\UserGroupCollection::hasUserGroupWithId
-     */
     public function test_hasUserGroupWithId(): void
     {
-        $userGroupA              = new UserGroup();
-        $userGroupA->id          = '00g5a84eu4ignaKwa357';
-        $userGroupA->type        = 'OKTA_GROUP';
-        $userGroupA->profileName = 'US_Users';
+        $userGroupA = new UserGroup(
+            '00g5a84eu4ignaKwa357',
+            'OKTA_GROUP',
+            'US_Users',
+        );
 
-        $userGroupB              = new UserGroup();
-        $userGroupB->id          = '00gb6o6h921aRyRDc356';
-        $userGroupB->type        = 'OKTA_GROUP';
-        $userGroupB->profileName = 'IT';
+        $userGroupB = new UserGroup(
+            '00gb6o6h921aRyRDc356',
+            'OKTA_GROUP',
+            'IT',
+        );
 
-        $userGroupC              = new UserGroup();
-        $userGroupC->id          = '00giaughr31bJgPPl356';
-        $userGroupC->type        = 'OKTA_GROUP';
-        $userGroupC->profileName = 'Okta Admins';
+        $userGroupC = new UserGroup(
+            '00giaughr31bJgPPl356',
+            'OKTA_GROUP',
+            'Okta Admins',
+        );
 
         $collection = new UserGroupCollection($userGroupA, $userGroupB, $userGroupC);
 
@@ -99,25 +112,25 @@ class UserGroupCollectionTest extends TestCase
         self::assertFalse($collection->hasUserGroupWithId('disco'));
     }
 
-    /**
-     * @covers \OktaClient\Dto\UserGroupCollection::hasUserGroupWithProfileName
-     */
     public function test_hasUserGroupWithProfileName(): void
     {
-        $userGroupA              = new UserGroup();
-        $userGroupA->id          = '00g5a84eu4ignaKwa357';
-        $userGroupA->type        = 'OKTA_GROUP';
-        $userGroupA->profileName = 'US_Users';
+        $userGroupA = new UserGroup(
+            '00g5a84eu4ignaKwa357',
+            'OKTA_GROUP',
+            'US_Users',
+        );
 
-        $userGroupB              = new UserGroup();
-        $userGroupB->id          = '00gb6o6h921aRyRDc356';
-        $userGroupB->type        = 'OKTA_GROUP';
-        $userGroupB->profileName = 'IT';
+        $userGroupB = new UserGroup(
+            '00gb6o6h921aRyRDc356',
+            'OKTA_GROUP',
+            'IT',
+        );
 
-        $userGroupC              = new UserGroup();
-        $userGroupC->id          = '00giaughr31bJgPPl356';
-        $userGroupC->type        = 'OKTA_GROUP';
-        $userGroupC->profileName = 'Okta Admins';
+        $userGroupC = new UserGroup(
+            '00giaughr31bJgPPl356',
+            'OKTA_GROUP',
+            'Okta Admins',
+        );
 
         $collection = new UserGroupCollection($userGroupA, $userGroupB, $userGroupC);
 

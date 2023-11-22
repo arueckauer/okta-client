@@ -6,21 +6,23 @@ namespace OktaClient\Dto;
 
 class GroupMember
 {
-    public string $id        = '';
-    public string $status    = '';
-    public string $firstName = '';
-    public string $lastName  = '';
-    public string $email     = '';
+    public function __construct(
+        public readonly string $id,
+        public readonly string $status,
+        public readonly string $firstName,
+        public readonly string $lastName,
+        public readonly string $email
+    ) {
+    }
 
     public static function fromArray(array $input): self
     {
-        $self            = new self();
-        $self->id        = (string) ($input['id'] ?? '');
-        $self->status    = (string) ($input['status'] ?? '');
-        $self->firstName = (string) ($input['profile']['firstName'] ?? '');
-        $self->lastName  = (string) ($input['profile']['lastName'] ?? '');
-        $self->email     = (string) ($input['profile']['email'] ?? '');
-
-        return $self;
+        return new self(
+            (string) ($input['id'] ?? ''),
+            (string) ($input['status'] ?? ''),
+            (string) ($input['profile']['firstName'] ?? ''),
+            (string) ($input['profile']['lastName'] ?? ''),
+            (string) ($input['profile']['email'] ?? ''),
+        );
     }
 }

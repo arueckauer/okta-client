@@ -5,13 +5,19 @@ declare(strict_types=1);
 namespace OktaClient;
 
 use GuzzleHttp\Client as HttpClient;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 use function assert;
 use function is_array;
 
 class ClientFactory
 {
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function __invoke(ContainerInterface $container): Client
     {
         $config = $container->get('config')[Client::class] ?? [];

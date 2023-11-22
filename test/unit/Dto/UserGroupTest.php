@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace OktaClientTest\Dto;
 
 use OktaClient\Dto\UserGroup;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(UserGroup::class)]
 class UserGroupTest extends TestCase
 {
-    /**
-     * @covers \OktaClient\Dto\UserGroup::fromArray
-     */
     public function test_fromArray(): void
     {
-        $expected              = new UserGroup();
-        $expected->id          = '00g5a84eu4ignaKwa357';
-        $expected->type        = 'OKTA_GROUP';
-        $expected->profileName = 'US_Users';
+        $expected = new UserGroup(
+            '00g5a84eu4ignaKwa357',
+            'OKTA_GROUP',
+            'US_Users',
+        );
 
         $input = [
             'id'                    => '00g5a84eu4ignaKwa357',
@@ -54,9 +54,21 @@ class UserGroupTest extends TestCase
             ],
         ];
 
+        $actual = UserGroup::fromArray($input);
+
         self::assertEquals(
-            $expected,
-            UserGroup::fromArray($input)
+            $expected->id,
+            $actual->id,
+        );
+
+        self::assertEquals(
+            $expected->type,
+            $actual->type,
+        );
+
+        self::assertEquals(
+            $expected->profileName,
+            $actual->profileName,
         );
     }
 }

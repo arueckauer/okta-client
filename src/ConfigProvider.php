@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace OktaClient;
 
+/**
+ * @psalm-type _Configuration = array{
+ *     dependencies: array{
+ *         factories: array<class-string, class-string>
+ *     }
+ * }
+ */
 class ConfigProvider
 {
     public function __invoke(): array
