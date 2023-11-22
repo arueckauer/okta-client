@@ -15,8 +15,9 @@ use function sprintf;
 
 class MemberOfCommand extends Command
 {
-    public function __construct(private readonly MemberOf $memberOf)
-    {
+    public function __construct(
+        private readonly MemberOf $memberOf,
+    ) {
         parent::__construct('user:member-of');
     }
 

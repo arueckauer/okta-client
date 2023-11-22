@@ -22,19 +22,21 @@ class GroupMemberCollectionTest extends TestCase
      */
     public function test_fromResponse(): void
     {
-        $groupMemberA            = new GroupMember();
-        $groupMemberA->id        = '00u6v94romPIKvGDI356';
-        $groupMemberA->status    = 'ACTIVE';
-        $groupMemberA->firstName = 'Cyrus';
-        $groupMemberA->lastName  = 'Boyle';
-        $groupMemberA->email     = 'Cyrus.Boyle@acme.com';
+        $groupMemberA = new GroupMember(
+            '00u6v94romPIKvGDI356',
+            'ACTIVE',
+            'Cyrus',
+            'Boyle',
+            'Cyrus.Boyle@acme.com',
+        );
 
-        $groupMemberB            = new GroupMember();
-        $groupMemberB->id        = '00u8rdmqbt1Rwlpig357';
-        $groupMemberB->status    = 'ACTIVE';
-        $groupMemberB->firstName = 'John';
-        $groupMemberB->lastName  = 'Gibson';
-        $groupMemberB->email     = 'John.Gibson@acme.com';
+        $groupMemberB = new GroupMember(
+            '00u8rdmqbt1Rwlpig357',
+            'ACTIVE',
+            'John',
+            'Gibson',
+            'John.Gibson@acme.com',
+        );
 
         $expected = new GroupMemberCollection($groupMemberA, $groupMemberB);
 

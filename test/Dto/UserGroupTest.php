@@ -14,10 +14,11 @@ class UserGroupTest extends TestCase
      */
     public function test_fromArray(): void
     {
-        $expected              = new UserGroup();
-        $expected->id          = '00g5a84eu4ignaKwa357';
-        $expected->type        = 'OKTA_GROUP';
-        $expected->profileName = 'US_Users';
+        $expected = new UserGroup(
+            '00g5a84eu4ignaKwa357',
+            'OKTA_GROUP',
+            'US_Users',
+        );
 
         $input = [
             'id'                    => '00g5a84eu4ignaKwa357',

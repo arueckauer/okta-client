@@ -11,8 +11,9 @@ use function strtolower;
 
 class MemberOf
 {
-    public function __construct(private readonly GetGroups $getGroups)
-    {
+    public function __construct(
+        private readonly GetGroups $getGroups,
+    ) {
     }
 
     /**

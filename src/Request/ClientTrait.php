@@ -8,10 +8,8 @@ use OktaClient\Client;
 
 trait ClientTrait
 {
-    protected Client $client;
-
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
+    public function __construct(
+        protected readonly Client $client,
+    ) {
     }
 }

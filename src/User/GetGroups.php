@@ -11,8 +11,9 @@ use OktaClient\Request\ListGroupsOfUser;
 
 class GetGroups
 {
-    public function __construct(private readonly ListGroupsOfUser $listGroupsOfUser)
-    {
+    public function __construct(
+        private readonly ListGroupsOfUser $listGroupsOfUser,
+    ) {
     }
 
     /**

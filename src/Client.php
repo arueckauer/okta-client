@@ -14,8 +14,10 @@ use function array_merge;
 
 class Client
 {
-    public function __construct(private readonly HttpClient $client, private readonly string $apiKey)
-    {
+    public function __construct(
+        private readonly HttpClient $client,
+        private readonly string $apiKey,
+    ) {
     }
 
     /**

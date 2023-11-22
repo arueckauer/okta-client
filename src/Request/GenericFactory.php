@@ -19,8 +19,11 @@ class GenericFactory implements FactoryInterface
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): object
-    {
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        ?array $options = null
+    ): object {
         $client = $container->get(Client::class);
         assert($client instanceof Client);
 

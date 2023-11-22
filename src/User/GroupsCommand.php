@@ -18,8 +18,9 @@ use function sprintf;
 
 class GroupsCommand extends Command
 {
-    public function __construct(private readonly GetGroups $getGroups)
-    {
+    public function __construct(
+        private readonly GetGroups $getGroups,
+    ) {
         parent::__construct('user:groups');
     }
 

@@ -14,12 +14,13 @@ class GroupMemberTest extends TestCase
      */
     public function test_fromArray(): void
     {
-        $expected            = new GroupMember();
-        $expected->id        = '00u6v94romPIKvGDI356';
-        $expected->status    = 'ACTIVE';
-        $expected->firstName = 'Clyde';
-        $expected->lastName  = 'Boyle';
-        $expected->email     = 'Clyde.Boyle@acme.com';
+        $expected = new GroupMember(
+            '00u6v94romPIKvGDI356',
+            'ACTIVE',
+            'Clyde',
+            'Boyle',
+            'Clyde.Boyle@acme.com',
+        );
 
         $input = [
             'id'              => '00u6v94romPIKvGDI356',

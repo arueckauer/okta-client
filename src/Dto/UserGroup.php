@@ -6,17 +6,19 @@ namespace OktaClient\Dto;
 
 class UserGroup
 {
-    public string $id          = '';
-    public string $type        = '';
-    public string $profileName = '';
+    public function __construct(
+        public readonly string $id,
+        public readonly string $type,
+        public readonly string $profileName
+    ) {
+    }
 
     public static function fromArray(array $input): self
     {
-        $self              = new self();
-        $self->id          = isset($input['id']) ? (string) $input['id'] : '';
-        $self->type        = isset($input['type']) ? (string) $input['type'] : '';
-        $self->profileName = isset($input['profile']['name']) ? (string) $input['profile']['name'] : '';
-
-        return $self;
+        return new self(
+            isset($input['id']) ? (string) $input['id'] : '',
+            isset($input['type']) ? (string) $input['type'] : '',
+            isset($input['profile']['name']) ? (string) $input['profile']['name'] : '',
+        );
     }
 }
