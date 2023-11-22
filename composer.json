@@ -24,7 +24,7 @@
         "guzzlehttp/guzzle": "^7.5",
         "laminas/laminas-config-aggregator": "^1.14",
         "laminas/laminas-servicemanager": "^3.22",
-        "symfony/console": "^5.4"
+        "symfony/console": "^6.3"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.39",
