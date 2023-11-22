@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OktaClientTest;
+namespace OktaClientTest\unit;
 
 use OktaClient\Client;
 use OktaClient\ConfigProvider;

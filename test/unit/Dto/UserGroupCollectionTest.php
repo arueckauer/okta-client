@@ -42,7 +42,7 @@ class UserGroupCollectionTest extends TestCase
         );
 
         $payload = file_get_contents(
-            dirname(__DIR__) . '/TestAsset/Request/list-groups-of-users-response.json'
+            dirname(__DIR__, 2) . '/asset/request/list-groups-of-users-response.json'
         );
 
         $body = $this->createMock(StreamInterface::class);

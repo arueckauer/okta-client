@@ -41,7 +41,7 @@ class GroupMemberCollectionTest extends TestCase
 
         $expected = new GroupMemberCollection($groupMemberA, $groupMemberB);
 
-        $payload = file_get_contents(dirname(__DIR__) . '/TestAsset/Request/list-group-members-response.json');
+        $payload = file_get_contents(dirname(__DIR__, 2) . '/asset/request/list-group-members-response.json');
 
         $body = $this->createMock(StreamInterface::class);
         $body
