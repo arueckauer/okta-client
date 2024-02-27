@@ -60,7 +60,7 @@ class GroupMemberCollection implements IteratorAggregate, Countable
     {
         $array = [];
 
-        foreach ($this->data as $groupMember) {
+        foreach ($this as $groupMember) {
             $array[] = (array) $groupMember;
         }
 
