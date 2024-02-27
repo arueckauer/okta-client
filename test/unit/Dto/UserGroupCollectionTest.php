@@ -59,26 +59,26 @@ class UserGroupCollectionTest extends TestCase
 
         $collection = UserGroupCollection::fromResponse($response);
 
-        $userGroups = $collection->all();
+        $userGroups = $collection->getIterator();
 
         self::assertCount(
             4,
-            $userGroups
+            $collection,
         );
 
         self::assertEquals(
             $userGroupA,
-            $userGroups[0]
+            $userGroups[0],
         );
 
         self::assertEquals(
             $userGroupB,
-            $userGroups[1]
+            $userGroups[1],
         );
 
         self::assertEquals(
             $userGroupC,
-            $userGroups[3]
+            $userGroups[3],
         );
     }
 
