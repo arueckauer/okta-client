@@ -18,6 +18,8 @@ use function file_get_contents;
 #[CoversClass(GroupMemberCollection::class)]
 class GroupMemberCollectionTest extends TestCase
 {
+    private ResponseInterface $response;
+
     /**
      * @throws JsonException
      */
@@ -41,6 +43,50 @@ class GroupMemberCollectionTest extends TestCase
 
         $expected = new GroupMemberCollection($groupMemberA, $groupMemberB);
 
+        self::assertEquals(
+            $expected,
+            GroupMemberCollection::fromResponse($this->response)
+        );
+    }
+
+    public function test_toArray(): void
+    {
+        $expected              = [
+            [
+                'id'        => '00u6v94romPIKvGDI356',
+                'status'    => 'ACTIVE',
+                'firstName' => 'Cyrus',
+                'lastName'  => 'Boyle',
+                'email'     => 'Cyrus.Boyle@acme.com',
+            ],
+            [
+                'id'        => '00u8rdmqbt1Rwlpig357',
+                'status'    => 'ACTIVE',
+                'firstName' => 'John',
+                'lastName'  => 'Gibson',
+                'email'     => 'John.Gibson@acme.com',
+            ],
+        ];
+        $groupMemberCollection = GroupMemberCollection::fromResponse($this->response);
+
+        self::assertEquals(
+            $expected,
+            $groupMemberCollection->toArray()
+        );
+    }
+
+    public function test_count(): void
+    {
+        $groupMemberCollection = GroupMemberCollection::fromResponse($this->response);
+
+        self::assertCount(
+            2,
+            $groupMemberCollection,
+        );
+    }
+
+    protected function setUp(): void
+    {
         $payload = file_get_contents(dirname(__DIR__, 2) . '/asset/request/list-group-members-response.json');
 
         $body = $this->createMock(StreamInterface::class);
@@ -49,15 +95,10 @@ class GroupMemberCollectionTest extends TestCase
             ->method('getContents')
             ->willReturn($payload);
 
-        $response = $this->createMock(ResponseInterface::class);
-        $response
+        $this->response = $this->createMock(ResponseInterface::class);
+        $this->response
             ->expects(self::once())
             ->method('getBody')
             ->willReturn($body);
-
-        self::assertEquals(
-            $expected,
-            GroupMemberCollection::fromResponse($response)
-        );
     }
 }
