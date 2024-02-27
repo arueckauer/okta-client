@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace OktaClient\Dto;
 
+use ArrayIterator;
+use Countable;
+use IteratorAggregate;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
+use Traversable;
 
+use function count;
 use function json_decode;
 
 use const JSON_THROW_ON_ERROR;
 
-class GroupMemberCollection
+class GroupMemberCollection implements IteratorAggregate, Countable
 {
     /** @var GroupMember[] */
     private array $data;
@@ -49,17 +54,9 @@ class GroupMemberCollection
     }
 
     /**
-     * @return GroupMember[]
-     */
-    public function all(): array
-    {
-        return $this->data;
-    }
-
-    /**
      * @return array<int, array>
      */
-    public function allAsArray(): array
+    public function toArray(): array
     {
         $array = [];
 
@@ -68,5 +65,15 @@ class GroupMemberCollection
         }
 
         return $array;
+    }
+
+    public function getIterator(): Traversable
+    {
+        return new ArrayIterator($this->data);
+    }
+
+    public function count(): int
+    {
+        return count($this->data);
     }
 }
