@@ -61,7 +61,7 @@ class UserGroupCollection implements IteratorAggregate, Countable
     {
         $array = [];
 
-        foreach ($this->data as $userGroup) {
+        foreach ($this as $userGroup) {
             $array[] = (array) $userGroup;
         }
 
@@ -70,7 +70,7 @@ class UserGroupCollection implements IteratorAggregate, Countable
 
     public function hasUserGroupWithId(string $id): bool
     {
-        foreach ($this->data as $userGroup) {
+        foreach ($this as $userGroup) {
             if ($userGroup->id === $id) {
                 return true;
             }
@@ -81,7 +81,7 @@ class UserGroupCollection implements IteratorAggregate, Countable
 
     public function hasUserGroupWithProfileName(string $profileName): bool
     {
-        foreach ($this->data as $userGroup) {
+        foreach ($this as $userGroup) {
             if ($userGroup->profileName === $profileName) {
                 return true;
             }
