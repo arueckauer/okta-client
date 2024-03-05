@@ -6,6 +6,7 @@ namespace OktaClient\Group;
 
 use GuzzleHttp\Exception\GuzzleException;
 use JsonException;
+use Psr\Http\Client\ClientExceptionInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
@@ -19,7 +20,7 @@ use function sprintf;
 class MembersCommand extends Command
 {
     public function __construct(
-        private readonly GetMembers $getMembers,
+        private readonly Repository $repository,
     ) {
         parent::__construct();
     }
@@ -34,21 +35,24 @@ class MembersCommand extends Command
     /**
      * @throws GuzzleException
      * @throws JsonException
+     * @throws ClientExceptionInterface
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $groupId = (string) $input->getArgument('group-id');
 
-        $collection = $this->getMembers->invoke($groupId)->allAsArray();
+        $collection = $this->repository->getMembers($groupId);
 
         if (0 === count($collection)) {
             $output->writeln(sprintf('No members found for Group "%s".', $groupId));
             return 0;
         }
 
+        $groupMembers = $collection->toArray();
+
         $table = new Table($output);
-        $table->setHeaders(array_keys($collection[0]));
-        $table->setRows($collection);
+        $table->setHeaders(array_keys($groupMembers[0]));
+        $table->setRows($groupMembers);
         $table->render();
 
         return 0;

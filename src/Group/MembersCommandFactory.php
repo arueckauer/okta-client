@@ -18,11 +18,11 @@ class MembersCommandFactory
      */
     public function __invoke(ContainerInterface $container): MembersCommand
     {
-        $getMembers = $container->get(GetMembers::class);
-        assert($getMembers instanceof GetMembers);
+        $repository = $container->get(Repository::class);
+        assert($repository instanceof Repository);
 
         return new MembersCommand(
-            $getMembers
+            $repository
         );
     }
 }
