@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace OktaClientTest\Dto;
 
+use Exception;
 use JsonException;
 use OktaClient\Dto\UserGroup;
 use OktaClient\Dto\UserGroupCollection;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\MockObject\Exception as MockObjectException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -20,6 +22,8 @@ class UserGroupCollectionTest extends TestCase
 {
     /**
      * @throws JsonException
+     * @throws Exception
+     * @throws MockObjectException
      */
     public function test_fromResponse(): void
     {
@@ -59,8 +63,6 @@ class UserGroupCollectionTest extends TestCase
 
         $collection = UserGroupCollection::fromResponse($response);
 
-        $userGroups = $collection->getIterator();
-
         self::assertCount(
             4,
             $collection,
@@ -68,17 +70,17 @@ class UserGroupCollectionTest extends TestCase
 
         self::assertEquals(
             $userGroupA,
-            $userGroups[0],
+            $collection[0],
         );
 
         self::assertEquals(
             $userGroupB,
-            $userGroups[1],
+            $collection[1],
         );
 
         self::assertEquals(
             $userGroupC,
-            $userGroups[3],
+            $collection[3],
         );
     }
 
