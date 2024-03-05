@@ -4,19 +4,27 @@ declare(strict_types=1);
 
 namespace OktaClient\Dto;
 
-use ArrayIterator;
+use ArrayAccess;
 use Countable;
-use IteratorAggregate;
+use Iterator;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
-use Traversable;
+use ReturnTypeWillChange;
 
 use function count;
+use function current;
 use function json_decode;
+use function key;
+use function next;
+use function reset;
 
 use const JSON_THROW_ON_ERROR;
 
-class GroupMemberCollection implements IteratorAggregate, Countable
+/**
+ * @template-implements ArrayAccess<int, GroupMember>
+ * @template-implements Iterator<int, GroupMember>
+ */
+class GroupMemberCollection implements ArrayAccess, Countable, Iterator
 {
     /** @var GroupMember[] */
     private array $data;
@@ -39,18 +47,13 @@ class GroupMemberCollection implements IteratorAggregate, Countable
             JSON_THROW_ON_ERROR
         );
 
-        $self = new self();
+        $groupMembers = [];
         /** @var array $userGroup */
         foreach ($payload as $userGroup) {
-            $self->add(GroupMember::fromArray($userGroup));
+            $groupMembers[] = GroupMember::fromArray($userGroup);
         }
 
-        return $self;
-    }
-
-    public function add(GroupMember $groupMember): void
-    {
-        $this->data[] = $groupMember;
+        return new self(...$groupMembers);
     }
 
     /**
@@ -60,20 +63,66 @@ class GroupMemberCollection implements IteratorAggregate, Countable
     {
         $array = [];
 
-        foreach ($this as $groupMember) {
+        foreach ($this->data as $groupMember) {
             $array[] = (array) $groupMember;
         }
 
         return $array;
     }
 
-    public function getIterator(): Traversable
-    {
-        return new ArrayIterator($this->data);
-    }
-
     public function count(): int
     {
         return count($this->data);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->data[$offset]);
+    }
+
+    public function offsetGet(mixed $offset): GroupMember
+    {
+        return $this->data[$offset];
+    }
+
+    /**
+     * Does nothing since the collection is immutable.
+     */
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+    }
+
+    /**
+     * Does nothing since the collection is immutable.
+     */
+    public function offsetUnset(mixed $offset): void
+    {
+    }
+
+    #[ReturnTypeWillChange]
+    public function current(): mixed
+    {
+        return current($this->data);
+    }
+
+    public function next(): void
+    {
+        next($this->data);
+    }
+
+    #[ReturnTypeWillChange]
+    public function key(): string|int|null
+    {
+        return key($this->data);
+    }
+
+    public function valid(): bool
+    {
+        return current($this->data) !== false;
+    }
+
+    public function rewind(): void
+    {
+        reset($this->data);
     }
 }
