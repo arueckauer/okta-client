@@ -4,22 +4,30 @@ declare(strict_types=1);
 
 namespace OktaClient\Dto;
 
-use ArrayIterator;
+use ArrayAccess;
 use Countable;
-use IteratorAggregate;
+use Iterator;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
-use Traversable;
+use ReturnTypeWillChange;
 
 use function count;
+use function current;
 use function json_decode;
+use function key;
+use function next;
+use function reset;
 
 use const JSON_THROW_ON_ERROR;
 
-class UserGroupCollection implements IteratorAggregate, Countable
+/**
+ * @template-implements ArrayAccess<int, UserGroup>
+ * @template-implements Iterator<int, UserGroup>
+ */
+class UserGroupCollection implements ArrayAccess, Countable, Iterator
 {
-    /** @var UserGroup[] */
-    private array $data;
+    /** @psalm-var array<array-key, UserGroup> */
+    private readonly array $data;
 
     public function __construct(UserGroup ...$data)
     {
@@ -31,8 +39,6 @@ class UserGroupCollection implements IteratorAggregate, Countable
      */
     public static function fromResponse(ResponseInterface $response): self
     {
-        $self = new self();
-
         /** @var array $payload */
         $payload = json_decode(
             $response->getBody()->getContents(),
@@ -41,17 +47,13 @@ class UserGroupCollection implements IteratorAggregate, Countable
             JSON_THROW_ON_ERROR
         );
 
+        $userGroups = [];
         /** @var array $userGroup */
         foreach ($payload as $userGroup) {
-            $self->add(UserGroup::fromArray($userGroup));
+            $userGroups[] = UserGroup::fromArray($userGroup);
         }
 
-        return $self;
-    }
-
-    public function add(UserGroup $userGroup): void
-    {
-        $this->data[] = $userGroup;
+        return new self(...$userGroups);
     }
 
     /**
@@ -61,7 +63,7 @@ class UserGroupCollection implements IteratorAggregate, Countable
     {
         $array = [];
 
-        foreach ($this as $userGroup) {
+        foreach ($this->data as $userGroup) {
             $array[] = (array) $userGroup;
         }
 
@@ -70,7 +72,7 @@ class UserGroupCollection implements IteratorAggregate, Countable
 
     public function hasUserGroupWithId(string $id): bool
     {
-        foreach ($this as $userGroup) {
+        foreach ($this->data as $userGroup) {
             if ($userGroup->id === $id) {
                 return true;
             }
@@ -81,7 +83,7 @@ class UserGroupCollection implements IteratorAggregate, Countable
 
     public function hasUserGroupWithProfileName(string $profileName): bool
     {
-        foreach ($this as $userGroup) {
+        foreach ($this->data as $userGroup) {
             if ($userGroup->profileName === $profileName) {
                 return true;
             }
@@ -90,13 +92,59 @@ class UserGroupCollection implements IteratorAggregate, Countable
         return false;
     }
 
-    public function getIterator(): Traversable
-    {
-        return new ArrayIterator($this->data);
-    }
-
     public function count(): int
     {
         return count($this->data);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->data[$offset]);
+    }
+
+    public function offsetGet(mixed $offset): UserGroup
+    {
+        return $this->data[$offset];
+    }
+
+    /**
+     * Does nothing since the collection is immutable.
+     */
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+    }
+
+    /**
+     * Does nothing since the collection is immutable.
+     */
+    public function offsetUnset(mixed $offset): void
+    {
+    }
+
+    #[ReturnTypeWillChange]
+    public function current(): mixed
+    {
+        return current($this->data);
+    }
+
+    public function next(): void
+    {
+        next($this->data);
+    }
+
+    #[ReturnTypeWillChange]
+    public function key(): string|int|null
+    {
+        return key($this->data);
+    }
+
+    public function valid(): bool
+    {
+        return current($this->data) !== false;
+    }
+
+    public function rewind(): void
+    {
+        reset($this->data);
     }
 }
