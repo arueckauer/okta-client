@@ -27,7 +27,7 @@ class ConfigProvider
                     User\GroupsCommand::class       => User\GroupsCommandFactory::class,
                     User\MemberOf::class            => User\MemberOfFactory::class,
                     User\MemberOfCommand::class     => User\MemberOfCommandFactory::class,
-                    Client::class                   => ClientFactory::class,
+                    ApiClientInterface::class       => ApiClientFactory::class,
                 ],
             ],
         ];
