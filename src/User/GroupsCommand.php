@@ -48,7 +48,7 @@ class GroupsCommand extends Command
 
         $userGroupCollection = $this->getGroups->invoke($userId);
 
-        $userGroups = $userGroupCollection->allAsArray();
+        $userGroups = $userGroupCollection->toArray();
 
         if (0 === count($userGroups)) {
             $output->writeln(sprintf('No groups found for User "%s".', $userId));
