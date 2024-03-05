@@ -2,11 +2,17 @@
 
 declare(strict_types=1);
 
-use OktaClient\Client;
+use OktaClient\ApiClientInterface;
+use GuzzleHttp\RequestOptions;
+use OktaClient\Http\HeaderOptions;
 
 return [
-    Client::class => [
-        'api_key'  => 'REPLACE_ME',
-        'base_uri' => 'https://REPLACE_ME.okta.com/api/v1/',
+    ApiClientInterface::class => [
+        'base_uri' => 'https://{{ okta_base_uri }}.okta.com/api/v1/',
+        RequestOptions::HEADERS => [
+            HeaderOptions::ACCEPT        => 'application/json',
+            HeaderOptions::AUTHORIZATION => 'SSWS {{ okta_api_key }}',
+            HeaderOptions::CONTENT_TYPE  => 'application/json',
+        ],
     ],
 ];
