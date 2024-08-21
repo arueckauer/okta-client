@@ -18,14 +18,13 @@ class ConfigProvider
         return [
             'dependencies' => [
                 'factories' => [
-                    Group\MembersCommand::class     => Group\MembersCommandFactory::class,
-                    Group\Repository::class         => Group\RepositoryFactory::class,
-                    Request\ListGroupsOfUser::class => Request\GenericFactory::class,
-                    User\GroupsCommand::class       => User\GroupsCommandFactory::class,
-                    User\MemberOf::class            => User\MemberOfFactory::class,
-                    User\MemberOfCommand::class     => User\MemberOfCommandFactory::class,
-                    User\Repository::class          => User\RepositoryFactory::class,
-                    ApiClientInterface::class       => ApiClientFactory::class,
+                    Group\MembersCommand::class => Group\MembersCommandFactory::class,
+                    Group\Repository::class     => Group\RepositoryFactory::class,
+                    User\GroupsCommand::class   => User\GroupsCommandFactory::class,
+                    User\MemberOf::class        => User\MemberOfFactory::class,
+                    User\MemberOfCommand::class => User\MemberOfCommandFactory::class,
+                    User\Repository::class      => User\RepositoryFactory::class,
+                    ApiClientInterface::class   => ApiClientFactory::class,
                 ],
             ],
         ];

@@ -8,7 +8,6 @@ use OktaClient\ApiClientInterface;
 use OktaClient\ConfigProvider;
 use OktaClient\Group\MembersCommand;
 use OktaClient\Group\Repository as GroupRepository;
-use OktaClient\Request\ListGroupsOfUser;
 use OktaClient\User\GroupsCommand;
 use OktaClient\User\MemberOf;
 use OktaClient\User\MemberOfCommand;
@@ -29,10 +28,9 @@ class ConfigProviderTest extends TestCase
 
         $factories = $config['dependencies']['factories'];
 
-        self::assertCount(8, $factories);
+        self::assertCount(7, $factories);
         self::assertArrayHasKey(MembersCommand::class, $factories);
         self::assertArrayHasKey(GroupRepository::class, $factories);
-        self::assertArrayHasKey(ListGroupsOfUser::class, $factories);
         self::assertArrayHasKey(GroupsCommand::class, $factories);
         self::assertArrayHasKey(MemberOf::class, $factories);
         self::assertArrayHasKey(MemberOfCommand::class, $factories);
