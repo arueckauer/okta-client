@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OktaClient\User;
 
-use GuzzleHttp\Exception\GuzzleException;
 use JsonException;
+use Psr\Http\Client\ClientExceptionInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
@@ -19,7 +19,7 @@ use function sprintf;
 class GroupsCommand extends Command
 {
     public function __construct(
-        private readonly GetGroups $getGroups,
+        private readonly Repository $repository,
     ) {
         parent::__construct('user:groups');
     }
@@ -36,8 +36,8 @@ class GroupsCommand extends Command
     }
 
     /**
-     * @throws GuzzleException
      * @throws JsonException
+     * @throws ClientExceptionInterface
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -46,7 +46,7 @@ class GroupsCommand extends Command
 
         $userId = (string) $input->getArgument('user-id');
 
-        $userGroupCollection = $this->getGroups->invoke($userId);
+        $userGroupCollection = $this->repository->getGroups($userId);
 
         $userGroups = $userGroupCollection->toArray();
 

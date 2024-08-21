@@ -18,11 +18,11 @@ class MemberOfFactory
      */
     public function __invoke(ContainerInterface $container): MemberOf
     {
-        $getGroups = $container->get(GetGroups::class);
-        assert($getGroups instanceof GetGroups);
+        $repository = $container->get(Repository::class);
+        assert($repository instanceof Repository);
 
         return new MemberOf(
-            $getGroups
+            $repository,
         );
     }
 }

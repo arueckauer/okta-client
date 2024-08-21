@@ -4,6 +4,15 @@ declare(strict_types=1);
 
 namespace OktaClient\Dto;
 
+/**
+ * @psalm-type _UserGroup = array{
+ *     id: string,
+ *     type: string,
+ *     profile: array{
+ *         name: string
+ *     }
+ * }
+ */
 class UserGroup
 {
     public function __construct(
@@ -13,12 +22,15 @@ class UserGroup
     ) {
     }
 
+    /**
+     * @psalm-param _UserGroup $input
+     */
     public static function fromArray(array $input): self
     {
         return new self(
-            isset($input['id']) ? (string) $input['id'] : '',
-            isset($input['type']) ? (string) $input['type'] : '',
-            isset($input['profile']['name']) ? (string) $input['profile']['name'] : '',
+            $input['id'],
+            $input['type'],
+            $input['profile']['name'],
         );
     }
 }

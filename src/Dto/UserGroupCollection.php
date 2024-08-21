@@ -18,6 +18,7 @@ use function json_decode;
 use const JSON_THROW_ON_ERROR;
 
 /**
+ * @psalm-import-type _UserGroup from UserGroup
  * @template TKey of array-key
  * @template TValue
  * @implements ArrayAccess<int, UserGroup>
@@ -38,7 +39,7 @@ class UserGroupCollection implements ArrayAccess, Countable, IteratorAggregate
      */
     public static function fromResponse(ResponseInterface $response): self
     {
-        /** @var array $payload */
+        /** @psalm-var array<array-key, _UserGroup> $payload */
         $payload = json_decode(
             $response->getBody()->getContents(),
             true,
@@ -47,7 +48,6 @@ class UserGroupCollection implements ArrayAccess, Countable, IteratorAggregate
         );
 
         $userGroups = [];
-        /** @var array $userGroup */
         foreach ($payload as $userGroup) {
             $userGroups[] = UserGroup::fromArray($userGroup);
         }

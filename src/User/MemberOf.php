@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace OktaClient\User;
 
-use GuzzleHttp\Exception\GuzzleException;
 use JsonException;
+use Psr\Http\Client\ClientExceptionInterface;
 
 use function strtolower;
 
 class MemberOf
 {
     public function __construct(
-        private readonly GetGroups $getGroups,
+        private readonly Repository $repository,
     ) {
     }
 
     /**
-     * @throws GuzzleException
      * @throws JsonException
+     * @throws ClientExceptionInterface
      */
     public function invoke(string $userId, string $userGroupName): bool
     {
-        $userGroupCollection = $this->getGroups->invoke($userId);
+        $userGroupCollection = $this->repository->getGroups($userId);
 
         foreach ($userGroupCollection as $userGroup) {
             if (strtolower($userGroup->profileName) === strtolower($userGroupName)) {
