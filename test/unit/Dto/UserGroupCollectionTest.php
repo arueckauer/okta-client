@@ -6,8 +6,8 @@ namespace OktaClientTest\Dto;
 
 use Exception;
 use JsonException;
-use OktaClient\UserGroup\Collection;
 use OktaClient\UserGroup\Dto;
+use OktaClient\UserGroup\DtoCollection;
 use PHPUnit\Framework\MockObject\Exception as MockObjectException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -59,7 +59,7 @@ class UserGroupCollectionTest extends TestCase
             ->method('getBody')
             ->willReturn($body);
 
-        $collection = Collection::fromResponse($response);
+        $collection = DtoCollection::fromResponse($response);
 
         self::assertCount(
             4,
@@ -102,7 +102,7 @@ class UserGroupCollectionTest extends TestCase
             'Okta Admins',
         );
 
-        $collection = new Collection($userGroupA, $userGroupB, $userGroupC);
+        $collection = new DtoCollection($userGroupA, $userGroupB, $userGroupC);
 
         self::assertTrue($collection->hasUserGroupWithId('00g5a84eu4ignaKwa357'));
         self::assertTrue($collection->hasUserGroupWithId('00gb6o6h921aRyRDc356'));
@@ -132,7 +132,7 @@ class UserGroupCollectionTest extends TestCase
             'Okta Admins',
         );
 
-        $collection = new Collection($userGroupA, $userGroupB, $userGroupC);
+        $collection = new DtoCollection($userGroupA, $userGroupB, $userGroupC);
 
         self::assertTrue($collection->hasUserGroupWithProfileName('US_Users'));
         self::assertTrue($collection->hasUserGroupWithProfileName('IT'));

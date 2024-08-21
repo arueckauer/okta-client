@@ -25,7 +25,7 @@ use const JSON_THROW_ON_ERROR;
  * @implements ArrayAccess<int, Dto>
  * @implements IteratorAggregate<int, Dto>
  */
-class Collection implements ArrayAccess, Countable, IteratorAggregate
+class DtoCollection implements ArrayAccess, Countable, IteratorAggregate
 {
     /** @psalm-var array<array-key, Dto> */
     private readonly array $data;
