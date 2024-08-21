@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OktaClientTest\unit;
+namespace OktaClientTest;
 
-use OktaClient\Client;
+use OktaClient\ApiClientInterface;
 use OktaClient\ConfigProvider;
-use OktaClient\Group\GetMembers;
 use OktaClient\Group\MembersCommand;
-use OktaClient\Request\ListGroupMembers;
+use OktaClient\Group\Repository;
 use OktaClient\Request\ListGroupsOfUser;
 use OktaClient\Request\ListUsers;
 use OktaClient\User\GetGroups;
@@ -29,16 +28,17 @@ class ConfigProviderTest extends TestCase
         /** @psalm-var _Configuration $config */
         $config = (new ConfigProvider())();
 
-        self::assertCount(10, $config['dependencies']['factories']);
-        self::assertArrayHasKey(Client::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(GetGroups::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(GetMembers::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(GroupsCommand::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(ListGroupMembers::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(ListGroupsOfUser::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(ListUsers::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(MemberOf::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(MemberOfCommand::class, $config['dependencies']['factories']);
-        self::assertArrayHasKey(MembersCommand::class, $config['dependencies']['factories']);
+        $factories = $config['dependencies']['factories'];
+
+        self::assertCount(9, $factories);
+        self::assertArrayHasKey(MembersCommand::class, $factories);
+        self::assertArrayHasKey(Repository::class, $factories);
+        self::assertArrayHasKey(ListGroupsOfUser::class, $factories);
+        self::assertArrayHasKey(ListUsers::class, $factories);
+        self::assertArrayHasKey(GetGroups::class, $factories);
+        self::assertArrayHasKey(GroupsCommand::class, $factories);
+        self::assertArrayHasKey(MemberOf::class, $factories);
+        self::assertArrayHasKey(MemberOfCommand::class, $factories);
+        self::assertArrayHasKey(ApiClientInterface::class, $factories);
     }
 }
