@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OktaClient\Dto;
+namespace OktaClient\UserGroup;
 
 /**
  * @psalm-type _UserGroup = array{
@@ -13,7 +13,7 @@ namespace OktaClient\Dto;
  *     }
  * }
  */
-class UserGroup
+class Dto
 {
     public function __construct(
         public readonly string $id,

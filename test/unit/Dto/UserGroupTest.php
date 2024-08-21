@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace OktaClientTest\Dto;
 
-use OktaClient\Dto\UserGroup;
+use OktaClient\UserGroup\Dto;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @psalm-import-type _UserGroup from UserGroup
+ * @psalm-import-type _UserGroup from Dto
  */
 class UserGroupTest extends TestCase
 {
     public function test_fromArray(): void
     {
-        $expected = new UserGroup(
+        $expected = new Dto(
             '00g5a84eu4ignaKwa357',
             'OKTA_GROUP',
             'US_Users',
@@ -29,7 +29,7 @@ class UserGroupTest extends TestCase
             ],
         ];
 
-        $actual = UserGroup::fromArray($input);
+        $actual = Dto::fromArray($input);
 
         self::assertEquals(
             $expected->id,

@@ -6,8 +6,8 @@ namespace OktaClientTest\Dto;
 
 use Exception;
 use JsonException;
-use OktaClient\Dto\UserGroup;
 use OktaClient\Dto\UserGroupCollection;
+use OktaClient\UserGroup\Dto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception as MockObjectException;
 use PHPUnit\Framework\TestCase;
@@ -27,19 +27,19 @@ class UserGroupCollectionTest extends TestCase
      */
     public function test_fromResponse(): void
     {
-        $userGroupA = new UserGroup(
+        $userGroupA = new Dto(
             '00g5a84eu4ignaKwa357',
             'OKTA_GROUP',
             'US_Users',
         );
 
-        $userGroupB = new UserGroup(
+        $userGroupB = new Dto(
             '00gb6o6h921aRyRDc356',
             'OKTA_GROUP',
             'IT',
         );
 
-        $userGroupC = new UserGroup(
+        $userGroupC = new Dto(
             '00giaughr31bJgPPl356',
             'OKTA_GROUP',
             'Okta Admins',
@@ -86,19 +86,19 @@ class UserGroupCollectionTest extends TestCase
 
     public function test_hasUserGroupWithId(): void
     {
-        $userGroupA = new UserGroup(
+        $userGroupA = new Dto(
             '00g5a84eu4ignaKwa357',
             'OKTA_GROUP',
             'US_Users',
         );
 
-        $userGroupB = new UserGroup(
+        $userGroupB = new Dto(
             '00gb6o6h921aRyRDc356',
             'OKTA_GROUP',
             'IT',
         );
 
-        $userGroupC = new UserGroup(
+        $userGroupC = new Dto(
             '00giaughr31bJgPPl356',
             'OKTA_GROUP',
             'Okta Admins',
@@ -116,19 +116,19 @@ class UserGroupCollectionTest extends TestCase
 
     public function test_hasUserGroupWithProfileName(): void
     {
-        $userGroupA = new UserGroup(
+        $userGroupA = new Dto(
             '00g5a84eu4ignaKwa357',
             'OKTA_GROUP',
             'US_Users',
         );
 
-        $userGroupB = new UserGroup(
+        $userGroupB = new Dto(
             '00gb6o6h921aRyRDc356',
             'OKTA_GROUP',
             'IT',
         );
 
-        $userGroupC = new UserGroup(
+        $userGroupC = new Dto(
             '00giaughr31bJgPPl356',
             'OKTA_GROUP',
             'Okta Admins',

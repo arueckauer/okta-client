@@ -9,6 +9,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use JsonException;
+use OktaClient\UserGroup\Dto;
 use Psr\Http\Message\ResponseInterface;
 use Traversable;
 
@@ -18,18 +19,18 @@ use function json_decode;
 use const JSON_THROW_ON_ERROR;
 
 /**
- * @psalm-import-type _UserGroup from UserGroup
+ * @psalm-import-type _UserGroup from Dto
  * @template TKey of array-key
  * @template TValue
- * @implements ArrayAccess<int, UserGroup>
- * @implements IteratorAggregate<int, UserGroup>
+ * @implements ArrayAccess<int, Dto>
+ * @implements IteratorAggregate<int, Dto>
  */
 class UserGroupCollection implements ArrayAccess, Countable, IteratorAggregate
 {
-    /** @psalm-var array<array-key, UserGroup> */
+    /** @psalm-var array<array-key, Dto> */
     private readonly array $data;
 
-    public function __construct(UserGroup ...$data)
+    public function __construct(Dto ...$data)
     {
         $this->data = $data;
     }
@@ -49,7 +50,7 @@ class UserGroupCollection implements ArrayAccess, Countable, IteratorAggregate
 
         $userGroups = [];
         foreach ($payload as $userGroup) {
-            $userGroups[] = UserGroup::fromArray($userGroup);
+            $userGroups[] = Dto::fromArray($userGroup);
         }
 
         return new self(...$userGroups);
@@ -101,7 +102,7 @@ class UserGroupCollection implements ArrayAccess, Countable, IteratorAggregate
         return isset($this->data[$offset]);
     }
 
-    public function offsetGet(mixed $offset): UserGroup
+    public function offsetGet(mixed $offset): Dto
     {
         return $this->data[$offset];
     }
