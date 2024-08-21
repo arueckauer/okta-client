@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OktaClient\User\GetGroups;
 
 use JsonException;
-use OktaClient\Dto\UserGroupCollection;
+use OktaClient\UserGroup\Collection;
 use OktaClient\UserGroup\Dto;
 use Psr\Http\Message\ResponseInterface;
 
@@ -21,7 +21,7 @@ class Hydrator
     /**
      * @throws JsonException
      */
-    public function invoke(ResponseInterface $response): UserGroupCollection
+    public function invoke(ResponseInterface $response): Collection
     {
         /** @psalm-var array<array-key, _UserGroup> $payload */
         $payload = json_decode(
@@ -36,6 +36,6 @@ class Hydrator
             $userGroups[] = Dto::fromArray($userGroup);
         }
 
-        return new UserGroupCollection(...$userGroups);
+        return new Collection(...$userGroups);
     }
 }

@@ -6,7 +6,7 @@ namespace OktaClientTest\Dto;
 
 use Exception;
 use JsonException;
-use OktaClient\Dto\UserGroupCollection;
+use OktaClient\UserGroup\Collection;
 use OktaClient\UserGroup\Dto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception as MockObjectException;
@@ -17,7 +17,7 @@ use Psr\Http\Message\StreamInterface;
 use function dirname;
 use function file_get_contents;
 
-#[CoversClass(UserGroupCollection::class)]
+#[CoversClass(Collection::class)]
 class UserGroupCollectionTest extends TestCase
 {
     /**
@@ -61,7 +61,7 @@ class UserGroupCollectionTest extends TestCase
             ->method('getBody')
             ->willReturn($body);
 
-        $collection = UserGroupCollection::fromResponse($response);
+        $collection = Collection::fromResponse($response);
 
         self::assertCount(
             4,
@@ -104,7 +104,7 @@ class UserGroupCollectionTest extends TestCase
             'Okta Admins',
         );
 
-        $collection = new UserGroupCollection($userGroupA, $userGroupB, $userGroupC);
+        $collection = new Collection($userGroupA, $userGroupB, $userGroupC);
 
         self::assertTrue($collection->hasUserGroupWithId('00g5a84eu4ignaKwa357'));
         self::assertTrue($collection->hasUserGroupWithId('00gb6o6h921aRyRDc356'));
@@ -134,7 +134,7 @@ class UserGroupCollectionTest extends TestCase
             'Okta Admins',
         );
 
-        $collection = new UserGroupCollection($userGroupA, $userGroupB, $userGroupC);
+        $collection = new Collection($userGroupA, $userGroupB, $userGroupC);
 
         self::assertTrue($collection->hasUserGroupWithProfileName('US_Users'));
         self::assertTrue($collection->hasUserGroupWithProfileName('IT'));

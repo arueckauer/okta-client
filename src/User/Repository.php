@@ -6,8 +6,8 @@ namespace OktaClient\User;
 
 use GuzzleHttp\Psr7\Request;
 use JsonException;
-use OktaClient\Dto\UserGroupCollection;
 use OktaClient\User\GetGroups\Hydrator as GetGroupsHydrator;
+use OktaClient\UserGroup\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 
@@ -25,7 +25,7 @@ class Repository
      * @throws ClientExceptionInterface
      * @throws JsonException
      */
-    public function getGroups(string $userId): UserGroupCollection
+    public function getGroups(string $userId): Collection
     {
         $request  = new Request(
             'GET',

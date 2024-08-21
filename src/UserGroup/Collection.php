@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OktaClient\Dto;
+namespace OktaClient\UserGroup;
 
 use ArrayAccess;
 use ArrayIterator;
@@ -25,7 +25,7 @@ use const JSON_THROW_ON_ERROR;
  * @implements ArrayAccess<int, Dto>
  * @implements IteratorAggregate<int, Dto>
  */
-class UserGroupCollection implements ArrayAccess, Countable, IteratorAggregate
+class Collection implements ArrayAccess, Countable, IteratorAggregate
 {
     /** @psalm-var array<array-key, Dto> */
     private readonly array $data;
