@@ -12,13 +12,11 @@ use OktaClient\User\GroupsCommand;
 use OktaClient\User\MemberOf;
 use OktaClient\User\MemberOfCommand;
 use OktaClient\User\Repository as UserRepository;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @psalm-import-type _Configuration from ConfigProvider
  */
-#[CoversClass(ConfigProvider::class)]
 class ConfigProviderTest extends TestCase
 {
     public function test__invoke(): void

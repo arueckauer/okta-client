@@ -8,7 +8,6 @@ use Exception;
 use JsonException;
 use OktaClient\UserGroup\Collection;
 use OktaClient\UserGroup\Dto;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception as MockObjectException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -17,7 +16,6 @@ use Psr\Http\Message\StreamInterface;
 use function dirname;
 use function file_get_contents;
 
-#[CoversClass(Collection::class)]
 class UserGroupCollectionTest extends TestCase
 {
     /**
