@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OktaClient\Group\GetMembers;
 
 use JsonException;
-use OktaClient\Dto\GroupMemberCollection;
 use OktaClient\GroupMember\Dto;
+use OktaClient\GroupMember\DtoCollection;
 use Psr\Http\Message\ResponseInterface;
 
 use function json_decode;
@@ -18,7 +18,7 @@ class Hydrator
     /**
      * @throws JsonException
      */
-    public function invoke(ResponseInterface $response): GroupMemberCollection
+    public function invoke(ResponseInterface $response): DtoCollection
     {
         /** @var array $payload */
         $payload = json_decode(
@@ -34,6 +34,6 @@ class Hydrator
             $groupMembers[] = Dto::fromArray($groupMember);
         }
 
-        return new GroupMemberCollection(...$groupMembers);
+        return new DtoCollection(...$groupMembers);
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OktaClient\Dto;
+namespace OktaClient\GroupMember;
 
 use ArrayAccess;
 use ArrayIterator;
@@ -24,7 +24,7 @@ use const JSON_THROW_ON_ERROR;
  * @implements ArrayAccess<int, Dto>
  * @implements IteratorAggregate<int, Dto>
  */
-class GroupMemberCollection implements ArrayAccess, Countable, IteratorAggregate
+class DtoCollection implements ArrayAccess, Countable, IteratorAggregate
 {
     /** @var Dto[] */
     private array $data;

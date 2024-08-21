@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OktaClientTest\Dto;
 
 use JsonException;
-use OktaClient\Dto\GroupMemberCollection;
 use OktaClient\GroupMember\Dto;
+use OktaClient\GroupMember\DtoCollection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -15,7 +15,7 @@ use Psr\Http\Message\StreamInterface;
 use function dirname;
 use function file_get_contents;
 
-#[CoversClass(GroupMemberCollection::class)]
+#[CoversClass(DtoCollection::class)]
 class GroupMemberCollectionTest extends TestCase
 {
     private ResponseInterface $response;
@@ -41,17 +41,17 @@ class GroupMemberCollectionTest extends TestCase
             'John.Gibson@acme.com',
         );
 
-        $expected = new GroupMemberCollection($groupMemberA, $groupMemberB);
+        $expected = new DtoCollection($groupMemberA, $groupMemberB);
 
         self::assertEquals(
             $expected,
-            GroupMemberCollection::fromResponse($this->response)
+            DtoCollection::fromResponse($this->response)
         );
     }
 
     public function test_toArray(): void
     {
-        $expected              = [
+        $expected                 = [
             [
                 'id'        => '00u6v94romPIKvGDI356',
                 'status'    => 'ACTIVE',
@@ -67,21 +67,21 @@ class GroupMemberCollectionTest extends TestCase
                 'email'     => 'John.Gibson@acme.com',
             ],
         ];
-        $groupMemberCollection = GroupMemberCollection::fromResponse($this->response);
+        $groupMemberDtoCollection = DtoCollection::fromResponse($this->response);
 
         self::assertEquals(
             $expected,
-            $groupMemberCollection->toArray()
+            $groupMemberDtoCollection->toArray()
         );
     }
 
     public function test_count(): void
     {
-        $groupMemberCollection = GroupMemberCollection::fromResponse($this->response);
+        $groupMemberDtoCollection = DtoCollection::fromResponse($this->response);
 
         self::assertCount(
             2,
-            $groupMemberCollection,
+            $groupMemberDtoCollection,
         );
     }
 

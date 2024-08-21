@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace OktaClient\Group;
 
 use JsonException;
-use OktaClient\Dto\GroupMemberCollection;
 use OktaClient\Group\GetMembers\Hydrator as GetMembersHydrator;
 use OktaClient\Group\GetMembers\RequestFactory;
+use OktaClient\GroupMember\DtoCollection;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 
@@ -23,7 +23,7 @@ class Repository
      * @throws ClientExceptionInterface
      * @throws JsonException
      */
-    public function getMembers(string $groupId): GroupMemberCollection
+    public function getMembers(string $groupId): DtoCollection
     {
         $response = $this->client->sendRequest(
             RequestFactory::invoke($groupId)
