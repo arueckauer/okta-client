@@ -5,26 +5,25 @@ declare(strict_types=1);
 namespace OktaClient\Dto;
 
 use ArrayAccess;
+use ArrayIterator;
 use Countable;
-use Iterator;
+use IteratorAggregate;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
-use ReturnTypeWillChange;
+use Traversable;
 
 use function count;
-use function current;
 use function json_decode;
-use function key;
-use function next;
-use function reset;
 
 use const JSON_THROW_ON_ERROR;
 
 /**
- * @template-implements ArrayAccess<int, GroupMember>
- * @template-implements Iterator<int, GroupMember>
+ * @template TKey of array-key
+ * @template TValue
+ * @implements ArrayAccess<int, GroupMember>
+ * @implements IteratorAggregate<int, GroupMember>
  */
-class GroupMemberCollection implements ArrayAccess, Countable, Iterator
+class GroupMemberCollection implements ArrayAccess, Countable, IteratorAggregate
 {
     /** @var GroupMember[] */
     private array $data;
@@ -99,30 +98,8 @@ class GroupMemberCollection implements ArrayAccess, Countable, Iterator
     {
     }
 
-    #[ReturnTypeWillChange]
-    public function current(): mixed
+    public function getIterator(): Traversable
     {
-        return current($this->data);
-    }
-
-    public function next(): void
-    {
-        next($this->data);
-    }
-
-    #[ReturnTypeWillChange]
-    public function key(): string|int|null
-    {
-        return key($this->data);
-    }
-
-    public function valid(): bool
-    {
-        return current($this->data) !== false;
-    }
-
-    public function rewind(): void
-    {
-        reset($this->data);
+        return new ArrayIterator($this->data);
     }
 }
