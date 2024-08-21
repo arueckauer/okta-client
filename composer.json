@@ -19,7 +19,7 @@
     ],
     "homepage": "https://github.com/arueckauer/okta-client",
     "require": {
-        "php": "~8.1.0",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.5",
         "laminas/laminas-config-aggregator": "^1.14",
