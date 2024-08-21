@@ -11,7 +11,7 @@ use Symfony\Component\Console\Application;
 
 require 'vendor/autoload.php';
 
-call_user_func(static function () {
+(static function () {
     /** @var ContainerInterface $container */
     $container = require 'config/container.php';
 
@@ -22,4 +22,4 @@ call_user_func(static function () {
         $container->get(UserMemberOfCommand::class),
     ]);
     $application->run();
-});
+})();
