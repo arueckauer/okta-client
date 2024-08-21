@@ -24,8 +24,8 @@ class MemberOf
     {
         $userGroupCollection = $this->getGroups->invoke($userId);
 
-        foreach ($userGroupCollection->all() as $userGroup) {
-            if (strtolower((string) $userGroup->profileName) === strtolower($userGroupName)) {
+        foreach ($userGroupCollection as $userGroup) {
+            if (strtolower($userGroup->profileName) === strtolower($userGroupName)) {
                 return true;
             }
         }
