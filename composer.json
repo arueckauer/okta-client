@@ -21,16 +21,16 @@
     "require": {
         "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^7.9.2",
+        "guzzlehttp/guzzle": "^7.9",
         "laminas/laminas-config-aggregator": "^1.15",
-        "laminas/laminas-servicemanager": "^3.22.1",
-        "symfony/console": "^6.4.10"
+        "laminas/laminas-servicemanager": "^3.22",
+        "symfony/console": "^6.4"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.43",
         "laminas/laminas-coding-standard": "^2.5",
-        "phpunit/phpunit": "^10.5.30",
-        "rector/rector": "^0.18.13",
+        "phpunit/phpunit": "^10.5",
+        "rector/rector": "^0.18",
         "roave/security-advisories": "dev-latest",
         "vimeo/psalm": "^5.25"
     },
