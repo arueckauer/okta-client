@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace OktaClientTest\Dto;
 
-use OktaClient\Dto\GroupMember;
+use OktaClient\GroupMember\Dto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(GroupMember::class)]
+#[CoversClass(Dto::class)]
 class GroupMemberTest extends TestCase
 {
     public function test_fromArray(): void
     {
-        $expected = new GroupMember(
+        $expected = new Dto(
             '00u6v94romPIKvGDI356',
             'ACTIVE',
             'Clyde',
@@ -72,7 +72,7 @@ class GroupMemberTest extends TestCase
             ],
         ];
 
-        $actual = GroupMember::fromArray($input);
+        $actual = Dto::fromArray($input);
 
         self::assertEquals(
             $expected->id,

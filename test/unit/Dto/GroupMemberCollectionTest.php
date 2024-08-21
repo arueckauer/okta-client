@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OktaClientTest\Dto;
 
 use JsonException;
-use OktaClient\Dto\GroupMember;
 use OktaClient\Dto\GroupMemberCollection;
+use OktaClient\GroupMember\Dto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -25,7 +25,7 @@ class GroupMemberCollectionTest extends TestCase
      */
     public function test_fromResponse(): void
     {
-        $groupMemberA = new GroupMember(
+        $groupMemberA = new Dto(
             '00u6v94romPIKvGDI356',
             'ACTIVE',
             'Cyrus',
@@ -33,7 +33,7 @@ class GroupMemberCollectionTest extends TestCase
             'Cyrus.Boyle@acme.com',
         );
 
-        $groupMemberB = new GroupMember(
+        $groupMemberB = new Dto(
             '00u8rdmqbt1Rwlpig357',
             'ACTIVE',
             'John',

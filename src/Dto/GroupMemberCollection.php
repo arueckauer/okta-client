@@ -9,6 +9,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use JsonException;
+use OktaClient\GroupMember\Dto;
 use Psr\Http\Message\ResponseInterface;
 use Traversable;
 
@@ -20,15 +21,15 @@ use const JSON_THROW_ON_ERROR;
 /**
  * @template TKey of array-key
  * @template TValue
- * @implements ArrayAccess<int, GroupMember>
- * @implements IteratorAggregate<int, GroupMember>
+ * @implements ArrayAccess<int, Dto>
+ * @implements IteratorAggregate<int, Dto>
  */
 class GroupMemberCollection implements ArrayAccess, Countable, IteratorAggregate
 {
-    /** @var GroupMember[] */
+    /** @var Dto[] */
     private array $data;
 
-    public function __construct(GroupMember ...$data)
+    public function __construct(Dto ...$data)
     {
         $this->data = $data;
     }
@@ -47,9 +48,9 @@ class GroupMemberCollection implements ArrayAccess, Countable, IteratorAggregate
         );
 
         $groupMembers = [];
-        /** @var array $userGroup */
-        foreach ($payload as $userGroup) {
-            $groupMembers[] = GroupMember::fromArray($userGroup);
+        /** @var array $groupMember */
+        foreach ($payload as $groupMember) {
+            $groupMembers[] = Dto::fromArray($groupMember);
         }
 
         return new self(...$groupMembers);
@@ -79,7 +80,7 @@ class GroupMemberCollection implements ArrayAccess, Countable, IteratorAggregate
         return isset($this->data[$offset]);
     }
 
-    public function offsetGet(mixed $offset): GroupMember
+    public function offsetGet(mixed $offset): Dto
     {
         return $this->data[$offset];
     }
