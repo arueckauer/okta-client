@@ -20,4 +20,10 @@
     <rule ref="PSR1.Methods.CamelCapsMethodName">
         <exclude-pattern>test/*Test.php</exclude-pattern>
     </rule>
+    <rule ref="WebimpressCodingStandard.Formatting.RedundantParentheses.SingleInstanceOf">
+        <exclude-pattern>bin/okta-client</exclude-pattern>
+    </rule>
+    <rule ref="WebimpressCodingStandard.NamingConventions.Exception.Suffix">
+        <exclude-pattern>src</exclude-pattern>
+    </rule>
 </ruleset>
