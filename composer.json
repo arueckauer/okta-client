@@ -19,17 +19,17 @@
     ],
     "homepage": "https://github.com/arueckauer/okta-client",
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.9",
         "laminas/laminas-config-aggregator": "^1.15",
-        "laminas/laminas-servicemanager": "^4.2",
+        "laminas/laminas-servicemanager": "^3.22 || ^4.2",
         "symfony/console": "^6.0 || ^7.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "~2.45.0",
-        "laminas/laminas-coding-standard": "~3.0.0",
-        "phpunit/phpunit": "~10.5.36",
+        "laminas/laminas-coding-standard": "~3.0.1",
+        "phpunit/phpunit": "~10.5.38",
         "rector/rector": "~2.0.0",
         "roave/security-advisories": "dev-latest",
         "vimeo/psalm": "~6.2.0"
