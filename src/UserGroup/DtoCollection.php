@@ -9,7 +9,6 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use JsonException;
-use OktaClient\UserGroup\Dto;
 use Psr\Http\Message\ResponseInterface;
 use Traversable;
 
