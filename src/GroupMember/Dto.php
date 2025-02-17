@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OktaClient\GroupMember;
 
-class Dto
+final class Dto
 {
     public function __construct(
         public readonly string $id,

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace OktaClient\Http;
 
-class HeaderOptions
+final class HeaderOptions
 {
-    final public const ACCEPT        = 'Accept';
-    final public const AUTHORIZATION = 'Authorization';
-    final public const CONTENT_TYPE  = 'Content-Type';
+    public const ACCEPT        = 'Accept';
+    public const AUTHORIZATION = 'Authorization';
+    public const CONTENT_TYPE  = 'Content-Type';
 }

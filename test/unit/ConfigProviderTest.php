@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @psalm-import-type _Configuration from ConfigProvider
  */
-class ConfigProviderTest extends TestCase
+final class ConfigProviderTest extends TestCase
 {
     public function test__invoke(): void
     {

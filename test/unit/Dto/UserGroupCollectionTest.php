@@ -16,7 +16,7 @@ use Psr\Http\Message\StreamInterface;
 use function dirname;
 use function file_get_contents;
 
-class UserGroupCollectionTest extends TestCase
+final class UserGroupCollectionTest extends TestCase
 {
     /**
      * @throws JsonException

@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use function sprintf;
 
-class MemberOfCommand extends Command
+final class MemberOfCommand extends Command
 {
     public function __construct(
         private readonly MemberOf $memberOf,

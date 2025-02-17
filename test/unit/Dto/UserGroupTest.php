@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @psalm-import-type _UserGroup from Dto
  */
-class UserGroupTest extends TestCase
+final class UserGroupTest extends TestCase
 {
     public function test_fromArray(): void
     {

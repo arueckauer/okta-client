@@ -14,7 +14,7 @@ use Psr\Http\Message\StreamInterface;
 use function dirname;
 use function file_get_contents;
 
-class GroupMemberCollectionTest extends TestCase
+final class GroupMemberCollectionTest extends TestCase
 {
     private ResponseInterface $response;
 

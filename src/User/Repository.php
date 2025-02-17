@@ -13,7 +13,7 @@ use Psr\Http\Client\ClientInterface;
 
 use function sprintf;
 
-class Repository
+final class Repository
 {
     public function __construct(
         private readonly ClientInterface $client,

@@ -16,7 +16,7 @@ use const JSON_THROW_ON_ERROR;
 /**
  * @psalm-import-type _UserGroup from Dto
  */
-class Hydrator
+final class Hydrator
 {
     /**
      * @throws JsonException
