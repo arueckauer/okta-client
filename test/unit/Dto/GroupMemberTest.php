@@ -7,7 +7,7 @@ namespace OktaClientTest\Dto;
 use OktaClient\GroupMember\Dto;
 use PHPUnit\Framework\TestCase;
 
-class GroupMemberTest extends TestCase
+final class GroupMemberTest extends TestCase
 {
     public function test_fromArray(): void
     {

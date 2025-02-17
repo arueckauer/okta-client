@@ -9,7 +9,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 
 use function strtolower;
 
-class MemberOf
+final class MemberOf
 {
     public function __construct(
         private readonly Repository $repository,

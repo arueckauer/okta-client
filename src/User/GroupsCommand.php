@@ -16,7 +16,7 @@ use function array_keys;
 use function count;
 use function sprintf;
 
-class GroupsCommand extends Command
+final class GroupsCommand extends Command
 {
     public function __construct(
         private readonly Repository $repository,

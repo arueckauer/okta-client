@@ -10,7 +10,7 @@ use Psr\Http\Message\RequestInterface;
 
 use function sprintf;
 
-class RequestFactory
+final class RequestFactory
 {
     public static function invoke(string $groupId): RequestInterface
     {

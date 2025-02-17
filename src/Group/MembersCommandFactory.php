@@ -10,7 +10,7 @@ use Psr\Container\NotFoundExceptionInterface;
 
 use function assert;
 
-class MembersCommandFactory
+final class MembersCommandFactory
 {
     /**
      * @throws ContainerExceptionInterface

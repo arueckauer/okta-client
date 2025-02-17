@@ -12,7 +12,7 @@ use Psr\Http\Client\ClientInterface;
 
 use function assert;
 
-class RepositoryFactory
+final class RepositoryFactory
 {
     /**
      * @throws ContainerExceptionInterface

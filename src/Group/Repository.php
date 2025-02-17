@@ -11,7 +11,7 @@ use OktaClient\GroupMember\DtoCollection;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 
-class Repository
+final class Repository
 {
     public function __construct(
         private readonly ClientInterface $client,

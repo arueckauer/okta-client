@@ -13,7 +13,7 @@ namespace OktaClient\UserGroup;
  *     }
  * }
  */
-class Dto
+final class Dto
 {
     public function __construct(
         public readonly string $id,
